@@ -1,0 +1,93 @@
+.sidebar{
+    
+    border-right:  0.5px solid rgb(230, 227, 277);
+    min-height: 100vh;
+    background-color: white;
+    width: 200px;
+    position: fixed;
+    .top{
+        height: 50px;
+        align-items: center;
+        text-align: center;
+        border-bottom: 0.5px solid rgb(230, 227, 277);;
+        span{
+            font-size: 25px;
+            font-family: Times, Times New Roman, Georgia, serif;
+            
+            .style{
+                color: aqua;
+    
+            }
+
+        }       
+    }
+    
+    .center{
+        padding-left: 10px;
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            .li{
+                width: 100%;
+                padding: 5px;
+                cursor:   pointer;
+                
+                a{
+                    width: 100%;
+                    text-decoration: none;
+                    color: rgb(65, 57, 57);
+                    .incon{
+                        color:  #7451fe;
+                    }
+                }
+                &:hover{
+                    background-color: #999;
+                }
+                .incon{
+                    font-size: 23px;
+                    padding-right: 5px;
+
+                }
+
+            }
+            .liDropdown{
+                width: 100%;
+                padding: 5px;
+                cursor:   pointer;
+                display: flex;                
+                .incon1{
+                    color:  #7451fe;
+                    font-size: 20px;
+                    margin-top: 9px;
+                    margin-right: 0px;
+                }
+                .NavDropdown{
+                    margin-left: 0px;
+                    a{
+                        width: 100%;
+                        text-decoration: none;
+                        color: rgb(65, 57, 57);
+                        
+                    }
+                    .incon{
+                        color:  #7451fe;
+                        font-size: 23px;
+                        padding-right: 5px;
+                    }
+
+                }
+                
+            }
+            .title{
+                font-size: 10px;
+                font-weight: bold;
+                color: #999;
+                margin-top: 15px;
+                margin-bottom: 5px;
+
+            }
+       }
+
+    }
+}
