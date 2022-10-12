@@ -7,13 +7,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle'
 import MasterLayout from './componets/admin/MasterLayout';
 import Medicament from './componets/admin/Medicament';
+import Dashboard from './componets/admin/Dashboard';
 const App = () => {
   return (
     <div className='app'>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='admin' element={<MasterLayout/>}>
-          <Route index element={/*<Dashboard/>*/ "salut"} />
+          <Route index element={<Dashboard/>} />
           <Route path='medicament' element={<Medicament/>} />
           <Route index element={/*<Dashboard/>*/ "salut"} />
         </Route>

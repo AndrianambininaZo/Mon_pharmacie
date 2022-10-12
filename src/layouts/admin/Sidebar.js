@@ -13,6 +13,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import SettingsIcon from '@mui/icons-material/Settings';
+import InventoryIcon from '@mui/icons-material/Inventory';
 
 const Sidebar = () => {
   const red = 'red';
@@ -34,6 +36,9 @@ const Sidebar = () => {
           <span className='title'>SERVICE</span>
           <li className='li'>
             <Link to='/admin/medicament'><MedicationIcon className='incon' />Medicament</Link>
+          </li>
+          <li className='li'>
+            <Link to='/admin/medicament'><InventoryIcon className='incon' />Stock</Link>
           </li>
           <li className='liDropdown'>
             <LocalShippingIcon className='incon1' />
@@ -60,6 +65,9 @@ const Sidebar = () => {
           <span className='title'>USERFUL</span>
           <li className='li'>
             <Link to='/admin'><NotificationsNoneIcon className='incon' />Notification</Link>
+          </li>
+          <li className='li'>
+            <Link to='/admin'><SettingsIcon className='incon' />Paramètres</Link>
           </li>
           <span className='title'>USER</span>
           <li className='li'>
