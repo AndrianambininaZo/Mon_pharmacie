@@ -72,7 +72,7 @@ const Dashboard = () => {
             <div className='charts'>
             <Featured/>
             <Chart/>              
-            </div>
+            </div>           
         </div>
     );
 };

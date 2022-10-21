@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import './sidebar.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Dashboard } from '@mui/icons-material'
 import HomeIcon from '@mui/icons-material/Home';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
@@ -15,9 +15,19 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
 import InventoryIcon from '@mui/icons-material/Inventory';
+import GroupIcon from '@mui/icons-material/Group';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import DropNav from './DropNav'
 
 const Sidebar = () => {
   const red = 'red';
+  const navigate = useNavigate();
+  const handleLogaout = (e) => {
+    e.preventDefault();
+    //localStorage.removeItem('user');
+    navigate('/');
+  }
 
   return (
     <div className='sidebar'>
@@ -31,37 +41,9 @@ const Sidebar = () => {
             <Link to='/admin'><HomeIcon className='incon' />Dashboard</Link>
           </li>
           <li className='li'>
-            <Link to='/admin/'><Dashboard className='incon' />Home</Link>
+            <Link to='/admin/'><AnalyticsIcon className='incon' />Stast</Link>
           </li>
-          <span className='title'>SERVICE</span>
-          <li className='li'>
-            <Link to='/admin/medicament'><MedicationIcon className='incon' />Medicament</Link>
-          </li>
-          <li className='li'>
-            <Link to='/admin/medicament'><InventoryIcon className='incon' />Stock</Link>
-          </li>
-          <li className='liDropdown'>
-            <LocalShippingIcon className='incon1' />
-            <NavDropdown title="Achat" className='NavDropdown'>
-              <NavDropdown.Item>
-                <Link to='/admin/medicament'><ShoppingCartIcon className='incon' />Commande</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link to='/'><ListAltIcon className='incon' />Liste</Link>
-              </NavDropdown.Item>
-            </NavDropdown>
-          </li>
-          <li className='liDropdown'>
-            <PointOfSaleIcon className='incon1' />
-            <NavDropdown title="Vente" className='NavDropdown'>
-              <NavDropdown.Item><Link to='/'>Admin</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item><Link to='/'>Admin</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item><Link to='/admin'><Dashboard className='incon' />Admin</Link>
-              </NavDropdown.Item>
-            </NavDropdown>
-          </li>
+          <DropNav/>       
           <span className='title'>USERFUL</span>
           <li className='li'>
             <Link to='/admin'><NotificationsNoneIcon className='incon' />Notification</Link>
@@ -72,12 +54,12 @@ const Sidebar = () => {
           <span className='title'>USER</span>
           <li className='li'>
             <Link to='/admin'><AccountCircleIcon className='incon' />Profile</Link>
-          </li>        
+          </li>
           <li className='li'>
-            <Link to='/admin'><LogoutIcon className='incon' />Logout</Link>
+            <Link to='/admin' onClick={handleLogaout}><LogoutIcon className='incon' />Logout</Link>
           </li>
         </ul>
-      </div>      
+      </div>
 
       <div className='botton'>
       </div>

@@ -1,0 +1,67 @@
+.dropNav{
+    padding: 0px;
+    .titlee{
+        display: flex;
+        justify-content: space-between;
+        &:hover{
+            background-color: #999;
+        }
+        .item{
+            display: flex;    
+            text-align: center;
+           
+            .incon-1{
+                color:  #7451fe;
+                    font-size: 20px;
+                    padding-top:5px ;
+            }
+            span{ 
+                margin-left: 4px;              
+                color: rgb(65, 57, 57);
+                
+            }
+
+        }
+        .toglge-btn{            
+            color:  #7451fe;
+            font-size: 20px;
+            transition: .3s;             
+            &:hover{
+                cursor: pointer;
+            }           
+        }
+    }
+    .sidebar-content{
+        padding-top: .25rem;
+        height: 0;
+        overflow: hidden;
+    }
+
+}
+.dropNav.open {
+    .titlee{
+
+        .toglge-btn{            
+            color:  #7451fe;
+            font-size: 20px;            
+           transform: rotate(180deg);         
+        }
+
+    }
+    .sidebar-content{
+        height: auto;
+        display: flex;
+        justify-content: center;
+        a{
+            text-decoration: none;
+            color: rgb(65, 57, 57);
+            width: 100%;
+            &:hover{
+                background-color: #999;
+                cursor: pointer;
+            }
+        }
+    }
+    
+
+}

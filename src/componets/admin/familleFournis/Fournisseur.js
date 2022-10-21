@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Medicament = () => {
+const Fournisseur = () => {
     return (
         <div>
-            Medicamenth
+            Fournisseur
         </div>
     );
 };
 
-export default Medicament;
+export default Fournisseur;

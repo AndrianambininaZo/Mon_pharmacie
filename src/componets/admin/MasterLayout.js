@@ -4,28 +4,28 @@ import styled from 'styled-components';
 import Navbara from '../../layouts/admin/Navbara';
 import { Outlet } from 'react-router-dom';
 const MasterLayout = () => {
-    const MasterPage=styled.div`
+    const MasterPage = styled.div`
     display: flex;
     `
-    const Main=styled.div`
-    margin-left: 200px; 
-    width: calc(100% - 200px);   
+    const Main = styled.div`
+    margin-left: 160px; 
+    width: calc(100% - 160px);   
     `
-    const Section=styled.div`
+    const Section = styled.div`
     margin-top: 50px;
     
     `
     return (
         <MasterPage>
-            <Sidebar/>
+            <Sidebar />
             <Main>
-                <Navbara/>
+                <Navbara />
                 <Section>
-                <Outlet/>
-                </Section>                
-            </Main>                                  
+                    <Outlet />
+                </Section>
+            </Main>
         </MasterPage>
-        
+
     );
 };
 

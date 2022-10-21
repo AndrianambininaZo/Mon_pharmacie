@@ -1,0 +1,30 @@
+.famille{
+    margin: 2rem;
+    padding-top: 2rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    .tablee{
+        flex:2;
+        width: 100%;
+        -webkit-box-shadow: -2px -5px 18px -8px #000000; 
+        box-shadow: -2px -5px 18px -8px #000000;
+        border-radius: 10px;
+       .title{
+        padding: 5px;
+        border-bottom: 1px solid #555;
+        }
+    }
+   .fadeLoader{
+        flex:1;
+        .Loader{
+            padding-left: 8rem;
+        }
+        
+    }
+    .form{
+        flex:1;
+    }
+    
+
+}
