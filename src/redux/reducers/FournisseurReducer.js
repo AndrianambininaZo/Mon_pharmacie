@@ -1,32 +1,23 @@
 import { FOURNISSEUR_LIST_FAIL,FOURNISSEUR_LIST_SUCCESS,FOURNISSEUR_LIST_REQUEST } from "../constants/FournisseurContant";
 
-export const listFournisseurReducer=(state={fournisseur:[]},actios)=>{
-    switch (actios.type) {
+export const fournisseurListReducer=(state={fournisseurs:[]},actios)=>{
+    switch(actios.type){
         case FOURNISSEUR_LIST_REQUEST:
-            {
-                return {
-                    loading:true,
-                    fournisseur:[]                    
-                }
+            return {
+                loading:true, 
+                fournisseurs:[]
             };
         case FOURNISSEUR_LIST_SUCCESS:
-                {
-                    return {
-                        loading:false,
-                        fournisseur:actios.payload                    
-                    }
+            return {
+                loading:false,
+                fournisseurs:actios.payload
                 };
-                case FOURNISSEUR_LIST_FAIL:
-                    {
-                        return {
-                            loading:true,
-                            error:actios.payload                   
-                        }
-                    };
-    
+        case FOURNISSEUR_LIST_FAIL:
+            return {
+                loading:false,
+                 error:actios.payload
+                };
         default:
-            break;
+            return state;        
     }
-
-
 }

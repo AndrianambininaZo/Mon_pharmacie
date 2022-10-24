@@ -10,10 +10,9 @@
             display: flex;    
             text-align: center;
            
-            .incon-1{
+            .incon_1{
                 color:  #7451fe;
                     font-size: 20px;
-                    padding-top:5px ;
             }
             span{ 
                 margin-left: 4px;              
@@ -52,13 +51,20 @@
         height: auto;
         display: flex;
         justify-content: center;
+        flex-direction: column;
         a{
             text-decoration: none;
-            color: rgb(65, 57, 57);
+            color: rgb(65, 57, 57);            
+             padding-left: 20px;
             width: 100%;
+            padding-top: 3px;
             &:hover{
                 background-color: #999;
                 cursor: pointer;
+            }
+            .inconLink{
+                color:  #7451fe;
+                font-size: 20px;                 
             }
         }
     }

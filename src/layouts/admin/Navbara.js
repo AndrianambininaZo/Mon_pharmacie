@@ -6,11 +6,10 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 const Navbara = () => {
     const Nav = styled.div` 
-    position:fixed ;
-    
+    position:fixed ;    
     height: 50px;
-    width: calc(100% - 200px);
-    border-bottom:0.5px solid rgb(230, 227, 277); ;
+    width: calc(100% - 160px);
+    border-bottom:0.5px solid rgb(230, 227, 277);
     
     `
     return (

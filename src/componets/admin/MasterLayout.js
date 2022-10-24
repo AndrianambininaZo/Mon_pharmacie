@@ -9,7 +9,7 @@ const MasterLayout = () => {
     `
     const Main = styled.div`
     margin-left: 160px; 
-    width: calc(100% - 160px);   
+    width: calc(100% - 60px);   
     `
     const Section = styled.div`
     margin-top: 50px;

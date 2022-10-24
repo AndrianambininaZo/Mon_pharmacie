@@ -28,15 +28,10 @@ const Famille = () => {
               loading={loading}
               size={150} />
               </div>
-                    : <div className='tablee'>
-                    <label className='title'>Liste de tous familles</label>
+                    : <div className=''>                    
                         <Tablee familles={familles} />
                     </div>
             }
-            <div className='form'>
-            
-            </div>
-
         </div>
     );
 };

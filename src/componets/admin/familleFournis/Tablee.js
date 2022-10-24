@@ -5,15 +5,16 @@ import { useEffect } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DataTable from 'react-data-table-component';
+import './table.scss'
 
 const Tablee = (props) => {
-    const [familless, setFamillesFiltrr]=useState([]);
-    const [search, setSearch] = useState(''); 
+    const [familless, setFamillesFiltrr] = useState([]);
+    const [search, setSearch] = useState('');
     const columns = [
         {
             name: "#",
             selector: (row) => row.id,
-            
+
         },
         {
 
@@ -35,44 +36,52 @@ const Tablee = (props) => {
                 </>
         }
     ]
- 
-useEffect(()=>{
-setFamillesFiltrr(props.familles)
- },[]) 
 
- useEffect(async () => {
-    const resultat = props.familles.filter((res) => {
-        return res.nom.toLowerCase().match(search.toLowerCase());
+    useEffect(() => {
+        setFamillesFiltrr(props.familles)
+    }, [])
 
-    });
-    setFamillesFiltrr(resultat);
-    
-}, [search]);
-  
-    
+    useEffect(async () => {
+        const resultat = props.familles.filter((res) => {
+            return res.nom.toLowerCase().match(search.toLowerCase());
+
+        });
+        setFamillesFiltrr(resultat);
+
+    }, [search]);
+
+
     return (
-        <div className=''>        
-        <DataTable
-                    columns={columns}
-                    data={familless}
-                    pagination
-                    fixedHeader
-                    fixedHeaderScrollHeight='350px'
-                    selectableRows
-                    selectableRowsHighlight
-                    subHeader                    
-                    subHeaderComponent={
-                        <input type="text"
-                            placeholder='Recherche famille'
-                            className='form-control w-25'
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                        />
-                    }
+    <div className='familleTable'>
+        <div className='tablee'>
+            <label className='title'>Liste de tous familles</label>
+            <DataTable
+                columns={columns}
+                data={familless}
+                pagination
+                fixedHeader
+                fixedHeaderScrollHeight='350px'
+                selectableRows
+                selectableRowsHighlight
+                subHeader
+                subHeaderComponent={
+                    <input type="text"
+                        placeholder='Recherche famille'
+                        className='form-control w-25'
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                }
 
 
-                />
+            />            
         </div>
+        <div className='forme'>
+                forme
+            </div>
+
+    </div>
+
     );
 };
 

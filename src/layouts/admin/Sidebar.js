@@ -4,21 +4,18 @@ import './sidebar.scss'
 import { Link, useNavigate } from 'react-router-dom'
 import { Dashboard } from '@mui/icons-material'
 import HomeIcon from '@mui/icons-material/Home';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import MedicationIcon from '@mui/icons-material/Medication';
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
 import InventoryIcon from '@mui/icons-material/Inventory';
-import GroupIcon from '@mui/icons-material/Group';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import DropNav from './DropNav'
+import { data } from './DropData'
 
 const Sidebar = () => {
   const red = 'red';
@@ -28,6 +25,8 @@ const Sidebar = () => {
     //localStorage.removeItem('user');
     navigate('/');
   }
+  const jsonData=JSON.stringify(data);
+  
 
   return (
     <div className='sidebar'>
@@ -41,9 +40,16 @@ const Sidebar = () => {
             <Link to='/admin'><HomeIcon className='incon' />Dashboard</Link>
           </li>
           <li className='li'>
-            <Link to='/admin/'><AnalyticsIcon className='incon' />Stast</Link>
+            <Link to='/admin'><AnalyticsIcon className='incon' />Stast</Link>
           </li>
-          <DropNav/>       
+          <span className='title'>SERVICE</span>
+          {
+            data.map((item,index)=><DropNav key={index} item={item}/>)
+            
+          } 
+          <li className='li'>
+            <Link to='/admin'><HomeIcon className='incon' />Dashboard</Link>
+          </li>          
           <span className='title'>USERFUL</span>
           <li className='li'>
             <Link to='/admin'><NotificationsNoneIcon className='incon' />Notification</Link>

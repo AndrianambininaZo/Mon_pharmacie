@@ -1,9 +1,8 @@
-.famille{
-    margin: 2rem;
-    padding-top: 2rem;
+.familleTable{
+    display: flex;
+    justify-content: space-between;
     .tablee{
-        flex:2;
-        width: 100%;
+        flex: 4;
         -webkit-box-shadow: -2px -5px 18px -8px #000000; 
         box-shadow: -2px -5px 18px -8px #000000;
         border-radius: 10px;
@@ -12,16 +11,7 @@
         border-bottom: 1px solid #555;
         }
     }
-   .fadeLoader{
-        flex:1;
-        .Loader{
-            padding-left: 8rem;
-        }
-        
+    .forme{
+        flex: 2;
     }
-    .form{
-        flex:1;
-    }
-    
-
 }

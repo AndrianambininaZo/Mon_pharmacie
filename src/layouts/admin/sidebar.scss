@@ -1,5 +1,4 @@
-.sidebar{
-    
+.sidebar{    
     border-right:  0.5px solid rgb(230, 227, 277);
     min-height: 100vh;
     background-color: white;
@@ -28,23 +27,24 @@
             list-style: none;
             margin: 0;
             padding: 0;
-            .li{
-                width: 100%;
-                padding: 5px;
-                cursor:   pointer;
-                
+            .li{               
+                height: auto;
+                display: flex;
+                padding-top: 10px;
                 a{
-                    width: 100%;
-                    height: 100%;
                     text-decoration: none;
                     color: rgb(65, 57, 57);
+                    width: 100%;
+                    height: 100%;                    
+                cursor:   pointer;
                     .incon{
                         color:  #7451fe;
                     }
+                    &:hover{
+                        background-color: #999;
+                    }
                 }
-                &:hover{
-                    background-color: #999;
-                }
+                
                 .incon{
                     font-size: 23px;
                     padding-right: 5px;
