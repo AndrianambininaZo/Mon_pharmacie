@@ -13,11 +13,9 @@
         }
     }
    .fadeLoader{
-        flex:1;
-        .Loader{
-            padding-left: 8rem;
-        }
-        
+    display: flex;
+    align-items: center;
+    justify-content: center;        
     }
     .form{
         flex:1;

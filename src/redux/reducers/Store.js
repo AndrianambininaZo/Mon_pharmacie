@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { medicamentListReducer } from "./MedicamentReducer";
 import { AchatList } from "./AchatReducer";
-import { familleListReducer } from "./FamilleReducer";
+import { familleAjouterReducer, familleListReducer, familleSupprimerReducer } from "./FamilleReducer";
 import { fournisseurListReducer } from "./FournisseurReducer";
 
 const reducer= combineReducers({    
@@ -11,6 +11,8 @@ const reducer= combineReducers({
     medicamentList:medicamentListReducer,
     famillelist:familleListReducer,
     fournisseurlist:fournisseurListReducer,
+    familleSupprimer:familleSupprimerReducer,
+    familleAjouter:familleAjouterReducer
 
 });
 
