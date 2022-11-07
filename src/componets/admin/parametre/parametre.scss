@@ -1,0 +1,31 @@
+.parametreMain{
+    display: flex;
+    margin: 1rem;
+    padding: 1rem;
+    .pourcentage{        
+        background-color: rgb(216, 201, 201);
+        display:flex;
+        flex: 2;
+        flex-direction: column;
+        .Progressbar{
+           label{
+            margin-left: .5rem;
+           border-bottom: 1px solid #555;
+           margin-bottom: .3rem;
+           }
+        }
+        .buttonModifier{
+            .btnModifier{
+                background-color: aquamarine;
+                border: none;
+                width: 90%;
+                margin: 5%;
+                border-radius: 4px;
+            }
+        }        
+    }
+    .utilisateur{
+        margin-left: .5rem;
+        flex:8
+    }
+}

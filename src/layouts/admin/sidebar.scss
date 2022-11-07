@@ -5,14 +5,19 @@
     width: 160px;
     position: fixed;
     .top{
+        display: flex;
         height: 50px;
         align-items: center;
         text-align: center;
-        border-bottom: 0.5px solid rgb(230, 227, 277);;
+        border-bottom: 0.5px solid rgb(230, 227, 277);
+        img{
+            padding-left: 2px;
+           width: 20%;
+        }
         span{
             font-size: 25px;
             font-family: Times, Times New Roman, Georgia, serif;
-            
+            padding-left: 2px;            
             .style{
                 color: aqua;
     

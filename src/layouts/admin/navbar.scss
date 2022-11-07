@@ -7,8 +7,10 @@
         margin-left: 8px;
         display: flex;
         text-align: center;
+        align-items: center;
         border: 1px solid lightgray;
-        border-radius: 6px;        
+        border-radius: 16px;
+        height: 5vh;        
         input{
             border: none;
             outline: none;

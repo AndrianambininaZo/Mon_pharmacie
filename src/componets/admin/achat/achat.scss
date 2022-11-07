@@ -1,0 +1,61 @@
+.achat{
+    margin: 1.3rem;
+    padding-top: 1rem;
+    .topAchat{
+        background-color: aliceblue;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: space-between;
+        height: 8vh;
+        label{
+            padding: .5rem;
+            font-size: 20px; 
+            font-weight: bold;           
+        }
+        .inputNo{
+           display: flex;
+           align-items: center;
+           justify-content: end;
+           padding-right: .5rem;
+            label{
+                font-size: 15px; 
+                font-weight: bold;                
+            }
+            input{
+                height: 4vh;
+                width: 40%; 
+                border-radius: 4px;     
+                
+            }
+        }
+        
+    }
+    .fournisseur{
+        margin-top: .5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        label{
+            padding-right: .3rem;
+        }
+        input{
+            border-radius: 6px;
+        }
+        select{border-radius: 6px;
+
+        }
+    }
+    .information{
+        margin-top: .5rem;
+        display: flex;
+        .tableAchat{
+            flex: 3;
+        }
+        .medicamentAchat{
+            flex: 4;
+
+        }
+    }
+
+}

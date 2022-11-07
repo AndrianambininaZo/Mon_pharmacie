@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FAMILLE_LIST_REQUEST,FAMILLE_LIST_FAIL,FAMILLE_LIST_SUCCESS, FAMILLE_SUPPRIMER_REQUEST, FAMILLE_SUPPRIMER_SUCCESS, FAMILLE_SUPPRIMER_FAIL, FAMILLE_AJOUTER_RESET, FAMILLE_AJOUTER_SUCCESS, FAMILLE_AJOUTER_FAIL } from "../constants/FamilleConstant";
+import { FAMILLE_LIST_REQUEST,FAMILLE_LIST_FAIL,FAMILLE_LIST_SUCCESS, FAMILLE_SUPPRIMER_REQUEST, FAMILLE_SUPPRIMER_SUCCESS, FAMILLE_SUPPRIMER_FAIL, FAMILLE_AJOUTER_RESET, FAMILLE_AJOUTER_SUCCESS, FAMILLE_AJOUTER_FAIL, FAMILLE_MODIFIER_REQUEST, FAMILLE_MODIFIER_SUCCESS, FAMILLE_MODIFIER_FAIL } from "../constants/FamilleConstant";
 
 //list famille
 export const listFamille=()=>async (dispatch)=>{
@@ -76,18 +76,18 @@ export const AjouterFamille=(donne)=>async (dispatch)=>{
 export const ModifierFamille=(donne)=>async (dispatch)=>{
     try {
         dispatch({
-            type:FAMILLE_AJOUTER_RESET
+            type:FAMILLE_MODIFIER_REQUEST
         })
 
         const {data}=await axios.put('Familles/'+donne.id,donne);
         dispatch({
-            type:FAMILLE_AJOUTER_SUCCESS,
+            type:FAMILLE_MODIFIER_SUCCESS,
             payload:data
         })
     } catch (errors) {
         const message="il y a un erreur de champs"
         dispatch({
-            type:FAMILLE_AJOUTER_FAIL,
+            type:FAMILLE_MODIFIER_FAIL,
             payload:errors.errorMessage
             
         })

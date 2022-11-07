@@ -120,3 +120,47 @@ import React from 'react';
 120	title: 'Examples/Filtering',
 121	component: Filtering,
 122};
+
+
+<div className='labelTile'>
+                    <label>Nom:</label>
+                    <label>DateProduction:</label>
+                    <label>DatePeremption:</label>
+                    <label>PrixAchat:</label>
+                    <label>PrixVente:</label>
+                    <label>Famille:</label>
+                </div>
+                <form className='input'>
+                        <input type="text" placeholder='medicament' />
+                        <input type="date" placeholder='medicament' />
+                        <input type="date" placeholder='medicament' />
+                        <input type="number" placeholder='medicament' />
+                        <input type="number" placeholder='medicament' />
+                        <select name="" id="">
+                            <option value="">---------------Famille-----------</option>
+                        </select>
+                        <button className='btn btn-primary' >Ajouter</button>
+                </form> 
+
+.labelTile{
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+}
+.input{
+    margin-left: 4px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+    input{
+        width: 100%;
+        border-radius: 10px;
+    }
+    select{
+        width: 100%;
+        border-radius: 10px;                
+    }
+    button{
+    }
+}

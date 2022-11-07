@@ -21,7 +21,6 @@ const Home = () => {
     }*/
     const hadleLogin = (e) => {
         e.preventDefault();
-        alert("d kh dsjk");
         setLoggedIn(true);
        
 

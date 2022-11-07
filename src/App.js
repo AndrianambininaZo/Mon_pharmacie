@@ -11,7 +11,11 @@ import Medicament from './componets/admin/medicament/Medicament';
 import Famille from './componets/admin/familleFournis/Famille';
 import PageNot from './componets/admin/PageNot/PageNot';
 import axios from 'axios';
-import Fournisseur from './componets/admin/familleFournis/Fournisseur';
+import Fournisseur from './componets/admin/Fournisseur.js/Fournisseur';
+import Client from './componets/admin/vente/Client';
+import Parametre from './componets/admin/parametre/Parametre';
+import Stock from './componets/admin/stock/Stock';
+import Achat from './componets/admin/achat/Achat';
 const App = () => {
   axios.defaults.baseURL = 'https://localhost:7036/';
   return (
@@ -24,6 +28,10 @@ const App = () => {
           <Route path='famille' element={<Famille/>} />
           <Route path='medicament' element={<Medicament/>} />
           <Route path='fournisseur' element={<Fournisseur/>} />
+          <Route path='client' element={<Client/>}/>
+          <Route path='parametre' element={<Parametre/>}/>
+          <Route path='stock' element={<Stock/>}/>
+          <Route path='commande' element={<Achat/>}/>
         </Route>
         <Route path='*' element={<PageNot/>} />        
       </Routes>

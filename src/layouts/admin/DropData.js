@@ -53,6 +53,11 @@ export const data=[
         Incon:LocalShippingIcon,
         children:[
             {
+                title:'Client',
+                path:'client',
+                Incon:ListAltIcon,
+            },
+            {
                 title:'Avec Prise',
                 path:'admin/commande',
                 Incon:ShoppingCartIcon,
@@ -61,7 +66,8 @@ export const data=[
                 title:'Sans Prise',
                 path:'achat',
                 Incon:ListAltIcon,
-            }
+            },
+           
         ]
     }
 

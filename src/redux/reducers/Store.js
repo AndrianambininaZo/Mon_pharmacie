@@ -1,18 +1,23 @@
 import { createStore ,combineReducers,applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { medicamentListReducer } from "./MedicamentReducer";
-import { AchatList } from "./AchatReducer";
-import { familleAjouterReducer, familleListReducer, familleSupprimerReducer } from "./FamilleReducer";
-import { fournisseurListReducer } from "./FournisseurReducer";
+import { familleAjouterReducer, familleListReducer, familleModifierReducer, familleSupprimerReducer } from "./FamilleReducer";
+import { fournisseurAjouterReducer, fournisseurListReducer, fournisseurSupprimerReducer } from "./FournisseurReducer";
+import { medicamentAjouterReducer, medicamentListReducer, medicamentSupprimerReducer } from "./MediamentReducer";
+import { stockListReducer } from "./StockReducer";
 
-const reducer= combineReducers({    
-    achatslist:AchatList,
-    medicamentList:medicamentListReducer,
+const reducer= combineReducers({ 
     famillelist:familleListReducer,
-    fournisseurlist:fournisseurListReducer,
     familleSupprimer:familleSupprimerReducer,
-    familleAjouter:familleAjouterReducer
+    familleAjouter:familleAjouterReducer,
+    familleModifier:familleModifierReducer,
+    founisseurList:fournisseurListReducer,
+    founisseurAjouter:fournisseurAjouterReducer,
+    founisseurSupprimer:fournisseurSupprimerReducer,
+    medicamentAjouter:medicamentAjouterReducer,
+    medicamentlist:medicamentListReducer,
+    medicamentSupprimer: medicamentSupprimerReducer ,
+    stockList:stockListReducer 
 
 });
 

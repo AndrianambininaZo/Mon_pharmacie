@@ -1,0 +1,11 @@
+.client{
+    .tableMain{
+        display: flex;
+        .table{
+            flex:3
+        }
+        .form{
+            flex: 1.5;
+        }
+    }
+}

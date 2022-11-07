@@ -1,17 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import styled from 'styled-components';
 import './navbar.scss'
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import { useDispatch, useSelector } from 'react-redux';
+import { listStock } from '../../redux/actions/StockAction';
+
 const Navbara = () => {
     const Nav = styled.div` 
     position:fixed ;    
     height: 50px;
     width: calc(100% - 160px);
-    border-bottom:0.5px solid rgb(230, 227, 277);
-    
-    `
+    border-bottom:0.5px solid rgb(230, 227, 277);   
+    ` 
+    const stockList =useSelector((state)=>state.stockList);
+    const {stocks}=stockList;
+    const dispatch=useDispatch();
+    const stockRemption=stocks.filter((res)=>{
+        return (res.qte >= 4)
+    }).length;
+    useEffect(()=>{
+        dispatch(listStock());
+    },[]);
+  
     return (
         <Nav>
             <div className='wrapper'>
@@ -22,7 +34,7 @@ const Navbara = () => {
                 <div className='items'>
                     <div className='item'>                        
                         <NotificationsNoneIcon className='Incon' />
-                        <div className='alerte'>4</div>
+                        <div className='alerte'>{stockRemption}</div>
                     </div>
                     <div className='item'>
                         <ChatBubbleOutlineIcon className='Incon' /> 

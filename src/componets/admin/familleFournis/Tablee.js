@@ -7,11 +7,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import DataTable from 'react-data-table-component';
 import TextField from '@mui/material/TextField';
 import './table.scss'
-import { useDispatch } from 'react-redux';
-import { AjouterFamille, supprimerFamille } from '../../../redux/actions/FamilleAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { AjouterFamille, supprimerFamille ,ModifierFamille} from '../../../redux/actions/FamilleAction';
 import { useNavigate } from 'react-router-dom';
 
 const Tablee = (props) => {
+    const [error ,setError]=useState('')
     const [familless, setFamillesFiltrr] = useState([]);
     const [search, setSearch] = useState('');
     const [id, setId] = useState('');
@@ -19,6 +20,7 @@ const Tablee = (props) => {
     const [hiddenAjouter, sethiddenAjouter] = useState(false)
     const [hiddenModifier, sethiddenModifier] = useState(true)
     const [text, setText] = useState("d'ajouter un");
+    const familleAjouter = useSelector((state) => state.familleAjouter)
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const deletehandler = (id) => {
@@ -36,11 +38,16 @@ const Tablee = (props) => {
         sethiddenModifier(false);
     }
     const handlerEditer = (e) => {
+        const donneEditer={
+            id:id,
+            nom:inputValue,
+        }
         e.preventDefault();
-        if(inputValue.length > 4){
+        if(inputValue.length < 4){
             return
         }else{
-            alert(inputValue);
+            dispatch(ModifierFamille(donneEditer));
+        
         }
         
     }
@@ -50,13 +57,7 @@ const Tablee = (props) => {
             nom: inputValue
         }
         dispatch(AjouterFamille(done));
-        if (props.error) {
-            return;
-            
-        }else{
-            
-        setInputValue('');
-        }
+        setError(props.error);
         
     }
     const columns = [
@@ -125,6 +126,7 @@ const Tablee = (props) => {
                 />
             </div>
             <div className='forme'>
+            <label style={{color:'red'}}>{ error}</label>
                 <form className='form' onSubmit={handlerSubmit} >
                     <input type="text" hidden value={id} onChange={(e) => setId(e.target.value)} />
                     <span>Formulaire {text} famille</span>

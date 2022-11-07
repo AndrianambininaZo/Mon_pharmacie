@@ -14,8 +14,9 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
-import DropNav from './DropNav'
-import { data } from './DropData'
+import DropNav from './DropNav';
+import { data } from './DropData';
+import logo from './../../assets/img/R.png'
 
 const Sidebar = () => {
   const red = 'red';
@@ -31,6 +32,7 @@ const Sidebar = () => {
   return (
     <div className='sidebar'>
       <div className='top'>
+        <img src={logo} />      
         <span>Ph<span className='style'>a</span>macies</span>
       </div>
       <div className='center'>
@@ -40,7 +42,7 @@ const Sidebar = () => {
             <Link to='/admin'><HomeIcon className='incon' />Dashboard</Link>
           </li>
           <li className='li'>
-            <Link to='/admin'><AnalyticsIcon className='incon' />Stast</Link>
+            <Link to='/admin'><AnalyticsIcon className='incon' />Stat</Link>
           </li>
           <span className='title'>SERVICE</span>
           {
@@ -48,14 +50,14 @@ const Sidebar = () => {
             
           } 
           <li className='li'>
-            <Link to='/admin'><HomeIcon className='incon' />Dashboard</Link>
+            <Link to='/admin/stock'><HomeIcon className='incon' />Stock</Link>
           </li>          
           <span className='title'>USERFUL</span>
           <li className='li'>
             <Link to='/admin'><NotificationsNoneIcon className='incon' />Notification</Link>
           </li>
           <li className='li'>
-            <Link to='/admin'><SettingsIcon className='incon' />Paramètres</Link>
+            <Link to='/admin/parametre'><SettingsIcon className='incon' />Paramètres</Link>
           </li>
           <span className='title'>USER</span>
           <li className='li'>

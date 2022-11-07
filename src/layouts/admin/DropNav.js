@@ -7,7 +7,6 @@ import { useState } from 'react';
 
 const DropNav = ({ item }) => {
     const [open, setOpen] = useState(false);
-    console.log(item.children);
     return (
         <div className={open ? 'dropNav open' : 'dropNav'}>
             
