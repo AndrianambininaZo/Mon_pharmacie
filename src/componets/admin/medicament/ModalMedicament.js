@@ -10,9 +10,11 @@ const ModalMedicament = ({ openModal,familles }) => {
     const [ datePeremption ,setDatePremtion]=useState('');
     const [dateProduction, setDateProduction]=useState('');
     const [prixAchat, setPrixAchat]=useState('');
-    const prixVente=prixAchat * 3.5
+    const pourcentage=(prixAchat * 3.5)/24;     
+    const prixVente= prixAchat ? (parseInt(prixAchat) + pourcentage).toFixed(0): 0;
     const [stock, setStock]=useState('');
     const [famille ,setFamille]=useState('');
+    const [unite ,setUnite]=useState('');
     const dispatch=useDispatch();
 
     const handlerSubmit=(e)=>{
@@ -25,10 +27,11 @@ const ModalMedicament = ({ openModal,familles }) => {
         const dataa={
             nom: nom,
             dateEntre: DateEntre,
+            unite:unite,
             dateProduction: dateProduction,
             datePeremption: datePeremption,
-            prixAchat: parseInt(prixAchat),
-            prixVente: prixVente
+            prixAchat: prixAchat,
+            prixVente:prixVente
           }
         if (stock < 0 || prixAchat < 0 || !famille) {
             return;
@@ -78,6 +81,16 @@ const ModalMedicament = ({ openModal,familles }) => {
                     <div className='form'>
                         <label>Quatité en stock:</label>
                        <input type="number" required value={stock} placeholder='stock ajouter' onChange={(e)=>setStock(e.target.value)} />
+                    </div>
+                    <div className='form'>
+                    <label htmlFor="">Famille:</label>
+                        <select required  value={unite}  onChange={(e)=>setUnite(e.target.value)} >
+                            <option value="">---------------Unite-----------</option>                                
+                            <option value="1">Unite 1</option>                                
+                            <option value="plaquete">plaquete</option>                               
+                            <option value="carton(50)">carton(50)</option>                             
+                            <option value="carton(100)">carton(100)</option>                          
+                        </select>
                     </div>
                     <div className='form'>
                     <label htmlFor="">Famille:</label>

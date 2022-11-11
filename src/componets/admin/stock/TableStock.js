@@ -7,15 +7,28 @@ const TableStock = ({ stocks }) => {
     const [medicament , setMedicament]=useState('');
     const [qte , setQte]=useState('');
     const [qteAjouter , setQteAjouter]=useState('');
-    const qteFinal= parseInt(qte) + parseInt(qteAjouter);
+    const qteFinal= parseInt(qte) + parseInt(qteAjouter) + 0;
+    const disabled =qteFinal < 50 ? true:false;
+    const [error, setError]=useState('');
     const handlerModifier=(id, idMed, medicament, qte)=>{
+        
         setId(id);
         setIdMed(idMed);
         setMedicament(medicament);
         setQte(qte);
 
     }
-    console.log(stocks);
+    const handlerSubmit=(e)=>{
+        e.preventDefault();
+        if (!qteFinal) {
+            setError('Selectionner une medicament');
+            return;            
+        }
+        else {
+            setError('');
+           
+        }
+    }
     return (
         <div className='maintock'>
             <div className='tableStock'>
@@ -36,15 +49,18 @@ const TableStock = ({ stocks }) => {
                                     <td>{index + 1}</td>
                                     <td>{s.nom}</td>
                                     <td>{s.qte}</td>
-                                    <td>{s.qte < 6 ?
-                                        <span style={{ color: 'red' }}> Insiffisante</span>
-                                        : s.qte < 50 ? <span style={{ color: '#911' }}> Passable</span>
+                                    <td>{s.qte < 50 ?
+                                        <span style={{ color: 'red' }}> Insiffisante(Approvissioner)</span>
+                                        : s.qte < 80 ? <span style={{ color: '#911' }}> Passable</span>
                                             : <span style={{ color: 'rgb(27, 187, 27)' }}> Normale</span>}
                                     </td>
-                                    <td>
-                                    <button className='btn btn-sm btn-primary' onClick={()=>handlerModifier(s.id,s.idMedicament, s.nom, s.qte)}>
-                                            <EditIcon className='incon'  />Modifietr
-                                        </button>
+                                    <td>{
+                                        s.qte < 50 ?<button className='btn btn-sm btn-primary' onClick={()=>handlerModifier(s.id,s.idMedicament, s.nom, s.qte)}>
+                                            <EditIcon className='incon'  />Ajouter
+                                        </button>: ""
+
+                                    }
+                                    
                                     </td>
                                 </tr>
                             )
@@ -53,7 +69,8 @@ const TableStock = ({ stocks }) => {
                 </table>
             </div>
             <div className='modifierStock'>
-                <form className='form'>
+                <form className='form' onSubmit={handlerSubmit}>
+                <label htmlFor="">{error}</label>
                 <input type="text" hidden value={id} onChange={(e)=> setId(e.target.value)} />                
                 <input type="text" hidden value={idMed} onChange={(e)=> setIdMed(e.target.value)} />                
                     <div className='input'>
@@ -70,10 +87,10 @@ const TableStock = ({ stocks }) => {
                     </div>
                     <div className='input'>
                         <label htmlFor="">Quatité:</label>
-                        <input type="number" value={qteFinal} readOnly  onChange={(e)=> setQteAjouter(e.target.value)}/>
+                        <input type="number" value={qteFinal} readOnly  />
                     </div>
                     <div className='button'>
-                       <button className='btn btn-success' >Valider</button>
+                       <button className='btn btn-success' disabled={disabled} >Valider</button>
                     </div>
                 </form>
             </div>

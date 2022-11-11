@@ -12,6 +12,7 @@ const Navbara = () => {
     position:fixed ;    
     height: 50px;
     width: calc(100% - 160px);
+    background-color: #fff;
     border-bottom:0.5px solid rgb(230, 227, 277);   
     ` 
     const stockList =useSelector((state)=>state.stockList);

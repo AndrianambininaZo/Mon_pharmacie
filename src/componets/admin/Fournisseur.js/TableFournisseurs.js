@@ -47,7 +47,7 @@ const TableFournisseurs = ({ fournisseurs }) => {
     }
 
     return (
-        <div className='tableFournisseur'>
+        <div className='tableFournisseur'>        
             <div className='mainTable'>
             <label >Listes de {fournisseurs.length} fournisseurs</label>
                 <table className='table table-bordered'>

@@ -1,78 +1,116 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { AjouterAchat, listAchats } from '../../../redux/actions/AchatAction';
+import { AjouterCommande } from '../../../redux/actions/CommandeAction';
 import { listFournisseurs } from '../../../redux/actions/FournisseurAction';
 import { listStock } from '../../../redux/actions/StockAction';
 import './achat.scss';
 import PanierAchat from './PanierAchat';
 import TableAchat from './TableAchat';
+const getCarts = () => {
+    let carts = localStorage.getItem('carts');
+    if (carts) {
+        return (carts = JSON.parse(localStorage.getItem("carts")));
+    }
+    else {
+        return [];
+    }
+}
 
 const Achat = () => {
-    const [telephone, setTelephone]=useState('');
-    const [nomfrs, setNomfrs]=useState('');
-    const [codeFrs, setCodeFrs]=useState('');
-    const [carteItems, setCartItems]=useState([]);
-    const dispatch=useDispatch();
+    const [telephone, setTelephone] = useState('');
+    const [nomfrs, setNomfrs] = useState('');
+    const [codeFrs, setCodeFrs] = useState('');
+    const [carts, setCarts] = useState(getCarts());
+    const [idFrs, setIdfrs]=useState('')
+    const dispatch = useDispatch();
     const founisseurList = useSelector((state) => state.founisseurList);
-    const stockList=useSelector((state)=>state.stockList);
+    const stockList = useSelector((state) => state.stockList);
+    const achatlist = useSelector((state) => state.achatlist);
     const { error, fournisseurs } = founisseurList;
-    
-    const {stocks,loading}=stockList;
-    const AchatStock=stocks.filter((res)=>{
-        return res.qte < 4;
+    const { stocks} = stockList;
+    const { achats } = achatlist;
+   const coutAchat=achats.length;
+    const AchatStock = stocks.filter((res) => {
+        return res.qte < 50;
     });
-    const handleChange=(res)=>{
+    const handleChange = (res) => {
         if (res == '') {
-            
             setTelephone('');
             setTelephone('');
             setNomfrs('');
             setCodeFrs('');
-        }else{
-            const frs=fournisseurs.find(x=> x.id==res)        
+        } else {
+            const frs = fournisseurs.find(x => x.id == res)
             setTelephone(frs.telephone);
+            setIdfrs(res);
             setNomfrs(frs.adresse)
             setCodeFrs(frs.codeFrs)
-            console.log(frs);
-        }     
-        
-    }
-    const ajouterPanier=(medicament)=>{
-        const medExist=carteItems.find((x)=>x.id===medicament.id);
-        if(medExist){
-            const newCartItems=carteItems.map((x)=>
-            x.id===medicament.id ? {...medExist, qte:medExist.qte + 1}: x
-            );
-            setCartItems(newCartItems);
-        }else{
-            const newCartItems=[...carteItems,{...medicament, qte:1}]
-            setCartItems(newCartItems);
         }
-        console.log(carteItems);
 
-    }  
-    
-    useEffect(async ()=>{
-        dispatch(listStock());
-        dispatch(listFournisseurs());
-    },[])
+    }
+    const ajouterPanier = (achat) => {
+        setCarts([...carts, achat])
+    }
+    const valideAchat=(montTotal,qte)=>{
+        const today = new Date();
+        const dd = String(today. getDate()). padStart(2, '0');
+        const mm = String(today. getMonth() + 1). padStart(2, '0'); //January is 0!
+        const yyyy = today. getFullYear();
+        const DateEntre =yyyy +'-' + mm +'-'+ dd;  
+        if (idFrs==='') {
+            alert('salection fourniseurs');
+            return
+            
+        }else{            
+        const achat={
+            date: DateEntre,
+            quatite: parseInt(qte),
+            montantTotal: montTotal,
+            mois: mm,
+            annees: String(yyyy)
+        }
+        console.log(coutAchat);
+        dispatch(AjouterAchat(idFrs,achat));
+        console.log(achats.length); 
+        carts.map((res)=>
+        dispatch(AjouterCommande(res.qte,res.id,achats.length + 1,montTotal))
+        )  
+         
+            
+        
+        
+       setCarts([]);
+        
+        }     
+
+    }
+   
+
+    useEffect(async () => {
+        localStorage.setItem("carts", JSON.stringify(carts));
+    dispatch(listFournisseurs());
+    dispatch(listStock());
+    dispatch(listAchats());
+    }, [carts,dispatch]);
     return (
         <div className='achat'>
             <div className='topAchat'>
                 <label htmlFor="">Bon de commande</label>
                 <div className='inputNo'>
                     <label htmlFor="">No:</label>
-                    <input type="text" readOnly />
+                    <input type="text" readOnly value={coutAchat + 1} />
                 </div>
             </div>
             <div className='fournisseur'>
                 <div className='formFourniseur'>
                     <label htmlFor="">Nom:</label>
-                    <select name="" id="" onChange={(e)=>handleChange(e.target.value)}>
+                    <select name="" id="" onChange={(e) => handleChange(e.target.value)}>
                         <option value="">-----Fourniseurs-----</option>
                         {
-                            fournisseurs.map((res,index)=>
-                            <option key={index} value={res.id}>{res.nom}</option>
+                            fournisseurs.map((res, index) =>
+                                <option key={index} value={res.id}>{res.nom}</option>
                             )
 
                         }
@@ -92,8 +130,8 @@ const Achat = () => {
                 </div>
             </div>
             <div className='information'>
-               <TableAchat ajouterPanier={ajouterPanier} stocks={AchatStock} />
-               <PanierAchat/>
+               <PanierAchat carts={carts} valideAchat={valideAchat}/>
+                <TableAchat ajouterPanier={ajouterPanier} stocks={AchatStock} />
             </div>
         </div>
     );

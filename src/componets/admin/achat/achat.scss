@@ -51,9 +51,61 @@
         display: flex;
         .tableAchat{
             flex: 3;
+            margin-left: 2px;
         }
-        .medicamentAchat{
+        .panierAchat{
             flex: 4;
+            padding-right: 4px;
+            .topPanier{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: aliceblue;
+                height: 6vh;
+                span{
+                    font-weight: bold;
+                }
+               
+            }
+            .containerPanier{
+                ul{
+                    text-decoration: none;
+                    li{ 
+                        display: flex; 
+                        justify-content: space-between;                     
+                        list-style: none;
+                        .name{
+                            flex: 6;
+                        }
+                        .qte{
+                           flex: 3;
+                        }
+                        .montant{
+                            flex: 3;
+                            text-align: right;
+
+                        }
+                                     
+                    }
+                }
+
+            }
+            .montantTotalPanier{
+                display: flex;
+                align-items: center;
+                justify-content: end;
+            }
+            .butonPanier{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                button{
+                    background-color: aquamarine;
+                    border: none;
+                    border-radius: 10px;
+                    width: 40%;
+                }
+            }
 
         }
     }

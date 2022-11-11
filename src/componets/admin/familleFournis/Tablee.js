@@ -8,11 +8,11 @@ import DataTable from 'react-data-table-component';
 import TextField from '@mui/material/TextField';
 import './table.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { AjouterFamille, supprimerFamille ,ModifierFamille} from '../../../redux/actions/FamilleAction';
+import { AjouterFamille, supprimerFamille, ModifierFamille } from '../../../redux/actions/FamilleAction';
 import { useNavigate } from 'react-router-dom';
 
 const Tablee = (props) => {
-    const [error ,setError]=useState('')
+    const [error, setError] = useState('')
     const [familless, setFamillesFiltrr] = useState([]);
     const [search, setSearch] = useState('');
     const [id, setId] = useState('');
@@ -38,18 +38,18 @@ const Tablee = (props) => {
         sethiddenModifier(false);
     }
     const handlerEditer = (e) => {
-        const donneEditer={
-            id:id,
-            nom:inputValue,
+        const donneEditer = {
+            id: id,
+            nom: inputValue,
         }
         e.preventDefault();
-        if(inputValue.length < 4){
+        if (inputValue.length < 4) {
             return
-        }else{
+        } else {
             dispatch(ModifierFamille(donneEditer));
-        
+
         }
-        
+
     }
     const handlerSubmit = (e) => {
         e.preventDefault();
@@ -58,7 +58,7 @@ const Tablee = (props) => {
         }
         dispatch(AjouterFamille(done));
         setError(props.error);
-        
+
     }
     const columns = [
         {
@@ -104,32 +104,38 @@ const Tablee = (props) => {
         <div className='familleTable'>
             <div className='tablee'>
                 <label className='title'>Liste de tous familles</label>
-                <DataTable
-                    columns={columns}
-                    data={familless}
-                    pagination
-                    fixedHeader
-                    fixedHeaderScrollHeight='350px'
-                    selectableRows
-                    selectableRowsHighlight
-                    subHeader
-                    subHeaderComponent={
-                        <input type="text"
-                            placeholder='Recherche famille'
-                            className='form-control w-25'
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                        />
-                    }
+                {
+                    familless.length > 0 ?
+                        <DataTable
+                            columns={columns}
+                            data={familless}
+                            pagination
+                            fixedHeader
+                            fixedHeaderScrollHeight='350px'
+                            selectableRows
+                            selectableRowsHighlight
+                            subHeader
+                            subHeaderComponent={
+                                <input type="text"
+                                    placeholder='Recherche famille'
+                                    className='form-control w-25'
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                />
+                            }
 
 
-                />
+                        />: <p>Il n'y a pas de famille</p>
+
+                }
+
             </div>
             <div className='forme'>
-            <label style={{color:'red'}}>{ error}</label>
-                <form className='form' onSubmit={handlerSubmit} >
-                    <input type="text" hidden value={id} onChange={(e) => setId(e.target.value)} />
-                    <span>Formulaire {text} famille</span>
+                <label style={{ color: 'red' }}>{error}</label>
+                <input type="text" hidden value={id} onChange={(e) => setId(e.target.value)} />                
+                <form className='form' onSubmit={handlerSubmit} > 
+                <span>Formulaire {text} famille</span>                   
+                    
                     <div className='input'>
                         <label>Famille:</label>
                         <input type="text" value={inputValue} placeholder='Famille' className='input' onChange={(e) => setInputValue(e.target.value)} required />

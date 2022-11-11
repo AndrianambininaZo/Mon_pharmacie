@@ -5,6 +5,9 @@ import { familleAjouterReducer, familleListReducer, familleModifierReducer, fami
 import { fournisseurAjouterReducer, fournisseurListReducer, fournisseurSupprimerReducer } from "./FournisseurReducer";
 import { medicamentAjouterReducer, medicamentListReducer, medicamentSupprimerReducer } from "./MediamentReducer";
 import { stockListReducer } from "./StockReducer";
+import { panierAjouterReducer, panierListReducer } from "./PanierAchatReducer";
+import { achatAjouterReducer, achatListReducer } from "./AchatReducer";
+import { commandeAjouterReducer } from "./CommandeReducer";
 
 const reducer= combineReducers({ 
     famillelist:familleListReducer,
@@ -17,7 +20,12 @@ const reducer= combineReducers({
     medicamentAjouter:medicamentAjouterReducer,
     medicamentlist:medicamentListReducer,
     medicamentSupprimer: medicamentSupprimerReducer ,
-    stockList:stockListReducer 
+    stockList:stockListReducer ,
+    panierAjouter:panierAjouterReducer,
+    panierList:panierListReducer,
+    ajouteAchat:achatAjouterReducer,
+    achatList:achatListReducer,
+    ajouteCommande:commandeAjouterReducer,
 
 });
 

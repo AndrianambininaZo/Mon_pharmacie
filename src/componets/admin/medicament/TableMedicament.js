@@ -12,15 +12,20 @@ const TableMedicament = ({medicaments,tableRef,}) => {
     const famillelist = useSelector((state) => state.famillelist);
     const { familles } = famillelist;
     const [show, setShow] = useState(false);    
-    const pageSize=4;
+    const pageSize=1;
     const [currentpage,  setcurrentpage]=useState(1);
     const [medicamentPage , setMedicamentPage]=useState([]); 
     const [dataEditer, setDataEditer]=useState("");
-    
+
     useEffect(() => {
-        dispatch(listFamille());
-        const pages=_(medicaments).slice(0).take(pageSize).value();
-        setMedicamentPage(pages)
+        if(medicaments.length ===page){
+            setMedicamentPage(medicaments); 
+        }else{
+            dispatch(listFamille());
+            const pages=_(medicaments).slice(0).take(pageSize).value();
+            setMedicamentPage(pages)
+        }
+        
     }, [dispatch]);
     const pageCout=medicaments ? Math.ceil(medicaments.length / pageSize): 0;
     if(pageCout===1)return null;

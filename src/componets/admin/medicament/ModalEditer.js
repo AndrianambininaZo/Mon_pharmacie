@@ -8,7 +8,8 @@ const ModalEditer = ({ openModal,familles,Editer }) => {
     const [ datePeremption ,setDatePremtion]=useState(Editer.datePeremption);
     const [dateProduction, setDateProduction]=useState(Editer.dateProduction);
     const [prixAchat, setPrixAchat]=useState(Editer.prixAchat);
-    const prixVente=prixAchat * 3.5
+    const pourcentage=(prixAchat * 3.5)/24;     
+    const prixVente= prixAchat ? parseInt(prixAchat) + pourcentage: 0;
     const [famille ,setFamille]=useState('');
     const dispatch=useDispatch();  
     const handlerSubmit=(e)=>{

@@ -16,6 +16,8 @@ import Client from './componets/admin/vente/Client';
 import Parametre from './componets/admin/parametre/Parametre';
 import Stock from './componets/admin/stock/Stock';
 import Achat from './componets/admin/achat/Achat';
+import AchatListe from './componets/admin/achat/AchatListe';
+import DetailCommande from './componets/admin/achat/DetailCommande';
 const App = () => {
   axios.defaults.baseURL = 'https://localhost:7036/';
   return (
@@ -32,6 +34,8 @@ const App = () => {
           <Route path='parametre' element={<Parametre/>}/>
           <Route path='stock' element={<Stock/>}/>
           <Route path='commande' element={<Achat/>}/>
+          <Route path='achat' element={<AchatListe/>}/>
+          <Route path='detailCommande/:id' element={<DetailCommande/>}/>
         </Route>
         <Route path='*' element={<PageNot/>} />        
       </Routes>
