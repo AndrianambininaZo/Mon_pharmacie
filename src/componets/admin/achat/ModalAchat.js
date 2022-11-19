@@ -2,7 +2,6 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { AjouterPanier } from '../../../redux/actions/PanierAchatAction';
 import './modalAchat.scss'
 
 
@@ -21,8 +20,9 @@ const ModalAchat = ({medicament,openModal,ajouterPanier}) => {
         const data={
             id:id,
             nom:nom,
-            qte:qteAcheter,
-            montant:montant            
+            qte:parseInt(qteAcheter),
+            montant:parseInt(prix)
+
         }
         ajouterPanier(data);
         openModal(false);

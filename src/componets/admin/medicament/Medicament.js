@@ -10,12 +10,14 @@ import { listMedicament } from '../../../redux/actions/MedicamentsAction';
 import FadeLoader from "react-spinners/FadeLoader"
 import { useDownloadExcel } from 'react-export-table-to-excel';
 const Medicament = () => {
+    const [recherche, setRecherche] = useState('');
     const [show, setShow] = useState(false);
     const dispatch = useDispatch();
     const famillelist = useSelector((state) => state.famillelist);
     const medicamentlist = useSelector((state) => state.medicamentlist);
     const medicamentAjouter = useSelector((state) => state.medicamentAjouter)
     const medicamentSupprimer = useSelector((state) => state.medicamentSupprimer);
+    const [page, setpage] = useState(8);
     const { success: successSupprimer } = medicamentSupprimer;
     const { familles } = famillelist;
     const { success } = medicamentAjouter;
@@ -27,12 +29,22 @@ const Medicament = () => {
         sheet: 'Users'
     });
     useEffect(async () => {
-        dispatch(listMedicament());
+        dispatch(listMedicament(recherche));
         dispatch(listFamille());
-    }, [dispatch, success, successSupprimer]);
+    }, [dispatch, success, successSupprimer, recherche]);
 
     return (
-        <div className='mainMedicamentt'>
+        <div className='mainMedicament'>
+            <div className='medicamentTop'>
+                <div className='title'>
+                    <span>Liste de tous medicament</span>
+                </div>
+                <div className='button'>
+                    <input type="text" value={recherche} onChange={(e) => setRecherche(e.target.value)} />
+                    <button className='btn btn-sm btnCsv' onClick={onDownload}>Exporter Csv</button>
+                    <button className='btn btn-sm btn-success' onClick={() => setShow(true)}><AddIcon />Nouveau</button>
+                </div>
+            </div>
             {
                 loading ?
                     <div className='fadeLoader'>
@@ -41,17 +53,8 @@ const Medicament = () => {
                             loading={loading}
                             size={150} />
                     </div> :
-                    <div className='medicament'>
-                        <div className='top'>
-                            <span>Liste de tous medicament</span>
-                            <div className='button'>
-                                <input type="text" placeholder='recherche medicament' />
-                                <button className='btn btn-sm btnCsv' onClick={onDownload}>Exporter Csv</button>
-                                <button className='btn btn-sm btn-success' onClick={() => setShow(true)}><AddIcon />Nouveau</button>
-                            </div>
-                        </div>
-                        <TableMedicament medicaments={medicaments} tableRef={tableRef} />
-                    </div>
+                    <TableMedicament medicaments={medicaments} tableRef={tableRef} pagess={page} />
+
             }
             {
                 show && <ModalMedicament familles={familles} openModal={setShow} />

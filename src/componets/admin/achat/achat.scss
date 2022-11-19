@@ -8,6 +8,7 @@
         text-align: center;
         justify-content: space-between;
         height: 8vh;
+        border-radius: 6px;
         label{
             padding: .5rem;
             font-size: 20px; 
@@ -34,8 +35,13 @@
     .fournisseur{
         margin-top: .5rem;
         display: flex;
+        padding-left: .5rem;
+        padding-right: .5rem;
         align-items: center;
         justify-content: space-between;
+        border: 1px solid aliceblue;
+        height: 8vh;
+        border-radius: 4px;
         label{
             padding-right: .3rem;
         }
@@ -62,6 +68,8 @@
                 justify-content: center;
                 background-color: aliceblue;
                 height: 6vh;
+                border-radius: 4px;
+                box-shadow:  1px saddlebrown;
                 span{
                     font-weight: bold;
                 }
@@ -69,22 +77,23 @@
             }
             .containerPanier{
                 ul{
+                    margin-top: .5rem;
                     text-decoration: none;
                     li{ 
                         display: flex; 
                         justify-content: space-between;                     
                         list-style: none;
-                        .name{
-                            flex: 6;
+                        align-items: center;
+                        border-bottom: .8px solid aliceblue;
+                       p{
+                        flex: 1;
+                        span{
+                            font-weight: bold;
                         }
-                        .qte{
-                           flex: 3;
+                        button{
+                            margin: .2rem;
                         }
-                        .montant{
-                            flex: 3;
-                            text-align: right;
-
-                        }
+                       }
                                      
                     }
                 }
@@ -100,10 +109,13 @@
                 align-items: center;
                 justify-content: center;
                 button{
-                    background-color: aquamarine;
+                    background-color: green;
                     border: none;
                     border-radius: 10px;
-                    width: 40%;
+                    color: antiquewhite;
+                    font-weight: bold;
+                    width: 80%;
+                    height: 5vh;
                 }
             }
 

@@ -12,6 +12,9 @@ const AchatListe = () => {
     const { achats, loading } = achatList;
     const navigate=useNavigate();
     const handlerDetail=(id)=>{
+        const data={id:1,idd:4
+
+        }
         return navigate('/admin/detailCommande/'+id);
 
     }
@@ -23,6 +26,7 @@ const AchatListe = () => {
             {
                 loading ? <FadeLoader
                             className='Loader'
+                            style={{marginLeft:'45%'}}
                             loading={loading}
                             size={150} /> :
                     <div className='listMain'>
@@ -50,7 +54,7 @@ const AchatListe = () => {
                                             <td>{res.quatite}</td>
                                             <td>{res.montantTotal}</td>
                                             <td>
-                                                <button className='btn btn-success' title='voir le detail' onClick={()=>handlerDetail(res.id)}>
+                                                <button className='btn btn-sm' style={{color:"#00CC66"}} title='voir le detail' onClick={()=>handlerDetail(res.id)}>
                                                  <VisibilityIcon />
                                                 </button>
                                             </td>

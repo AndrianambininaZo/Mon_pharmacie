@@ -1,41 +1,41 @@
-import { PANIER_AJOUTER_FAIL, PANIER_AJOUTER_REQUEST, PANIER_AJOUTER_SUCCESS } from "../constants/PanierAchatConstant";
+import { EMPLOYER_AJOUTER_FAIL, EMPLOYER_AJOUTER_REQUEST, EMPLOYER_AJOUTER_SUCCESS, EMPLOYER_LIST_FAIL, EMPLOYER_LIST_REQUEST, EMPLOYER_LIST_SUCCESS } from "../constants/EmployerConstant";
 
 //famille Ajouter
-export const panierAjouterReducer=(state={},actios)=>{
+export const employerAjouterReducer=(state={},actios)=>{
     switch(actios.type){
-        case PANIER_AJOUTER_REQUEST:
+        case EMPLOYER_AJOUTER_REQUEST:
             return {
                 loading:true, 
             };
-        case PANIER_AJOUTER_SUCCESS:
+        case EMPLOYER_AJOUTER_SUCCESS:
             return {
                 loading:false,
                  success:true,
-                 carts:actios.payload
+                 employers:actios.payload
                 };
-        case PANIER_AJOUTER_FAIL:
+        case EMPLOYER_AJOUTER_FAIL:
             return {
                 loading:false,
                  error:actios.payload
-                };        
+                };
         default:
             return state;        
     }
 }
 
-export const panierListReducer=(state={carts:[]},actios)=>{
+export const employerListReducer=(state={employers:[]},actios)=>{
     switch(actios.type){
-        case PANIER_AJOUTER_REQUEST:
+        case EMPLOYER_LIST_REQUEST:
             return {
                 loading:true, 
-                carts:[]
+                employers:[]
             };
-        case PANIER_AJOUTER_SUCCESS:
+        case EMPLOYER_LIST_SUCCESS:
             return {
                 loading:false,
-                 carts:actios.payload
+                employers:actios.payload
                 };
-        case PANIER_AJOUTER_FAIL:
+        case EMPLOYER_LIST_FAIL:
             return {
                 loading:false,
                  error:actios.payload

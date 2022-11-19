@@ -14,13 +14,17 @@ import { listStock } from '../../redux/actions/StockAction';
 const Dashboard = () => {
     const medicamentlist=useSelector((state)=>state.medicamentlist);
     const stockList=useSelector((state)=>state.stockList);
+    const achatList = useSelector((state) => state.achatList);
+    const { achats } = achatList;
     const {medicaments}=medicamentlist;
     const {stocks,loading}=stockList;
     const coutMedicament=medicaments.length;
+    const coutAchat=achats.length;
     const sumStock = stocks.reduce(
         (previousValuer, currentValue) => previousValuer + currentValue.qte,
         0
       );
+      
     //  console.log(sumStock)
     const dispatch= useDispatch();
     useEffect(async()=>{
@@ -61,8 +65,8 @@ const Dashboard = () => {
                 <div className='widget'>
                     <div className='left'>
                         <span className='title'>Achat</span>
-                        <span className='counter'>{45}</span>
-                        <Link to='/admin/medicament' className='link'>Details achats</Link>
+                        <span className='counter'>{coutAchat}</span>
+                        <Link to='/admin/achat' className='link'>Details achats</Link>
                     </div>
                     <div className='right'>
                         <div className='pourcentage positive'>

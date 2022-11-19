@@ -59,12 +59,12 @@ export const data=[
             },
             {
                 title:'Avec Prise',
-                path:'admin/commande',
+                path:'venteavec',
                 Incon:ShoppingCartIcon,
             },
             {
                 title:'Sans Prise',
-                path:'achat',
+                path:'ventesans',
                 Incon:ListAltIcon,
             },
            

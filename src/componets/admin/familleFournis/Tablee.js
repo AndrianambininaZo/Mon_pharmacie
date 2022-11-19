@@ -106,7 +106,7 @@ const Tablee = (props) => {
                 <label className='title'>Liste de tous familles</label>
                 {
                     familless.length > 0 ?
-                        <DataTable
+                        <DataTable                        
                             columns={columns}
                             data={familless}
                             pagination

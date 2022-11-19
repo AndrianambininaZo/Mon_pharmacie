@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { AjouterAchat, listAchats } from '../../../redux/actions/AchatAction';
 import { AjouterCommande } from '../../../redux/actions/CommandeAction';
 import { listFournisseurs } from '../../../redux/actions/FournisseurAction';
@@ -27,14 +28,15 @@ const Achat = () => {
     const dispatch = useDispatch();
     const founisseurList = useSelector((state) => state.founisseurList);
     const stockList = useSelector((state) => state.stockList);
-    const achatlist = useSelector((state) => state.achatlist);
+    const achatList = useSelector((state) => state.achatList);
     const { error, fournisseurs } = founisseurList;
     const { stocks} = stockList;
-    const { achats } = achatlist;
-   const coutAchat=achats.length;
+    const { achats,success:successAchat } = achatList;
+    const coutAchat=achats.length;
     const AchatStock = stocks.filter((res) => {
         return res.qte < 50;
     });
+    const navigate=useNavigate();
     const handleChange = (res) => {
         if (res == '') {
             setTelephone('');
@@ -54,45 +56,44 @@ const Achat = () => {
         setCarts([...carts, achat])
     }
     const valideAchat=(montTotal,qte)=>{
-        const today = new Date();
-        const dd = String(today. getDate()). padStart(2, '0');
-        const mm = String(today. getMonth() + 1). padStart(2, '0'); //January is 0!
-        const yyyy = today. getFullYear();
-        const DateEntre =yyyy +'-' + mm +'-'+ dd;  
+            const today = new Date();
+            const dd = String(today. getDate()). padStart(2, '0');
+            const mm = String(today. getMonth() + 1). padStart(2, '0'); //January is 0!
+            const yyyy = today. getFullYear();
+            const DateEntre =yyyy +'-' + mm +'-'+ dd;  
         if (idFrs==='') {
             alert('salection fourniseurs');
             return
             
         }else{            
-        const achat={
-            date: DateEntre,
-            quatite: parseInt(qte),
-            montantTotal: montTotal,
-            mois: mm,
-            annees: String(yyyy)
-        }
-        console.log(coutAchat);
-        dispatch(AjouterAchat(idFrs,achat));
-        console.log(achats.length); 
-        carts.map((res)=>
-        dispatch(AjouterCommande(res.qte,res.id,achats.length + 1,montTotal))
-        )  
-         
-            
-        
-        
-       setCarts([]);
-        
-        }     
+            const achat={
+                date: DateEntre,
+                quatite: parseInt(qte),
+                montantTotal: montTotal,
+                mois: mm,
+                annees: String(yyyy)
+        }        
+            dispatch(AjouterAchat(idFrs,achat));
+            if (successAchat) {
+                alert("mety")
+                
+            }else alert('ok');
 
+            carts.map((res)=>
+            dispatch(AjouterCommande(res.qte,res.id,4,res.montant))
+            );        
+            setCarts([]);
+            
+            //navigate('/admin/achat');    
+        }
     }
    
 
     useEffect(async () => {
-        localStorage.setItem("carts", JSON.stringify(carts));
-    dispatch(listFournisseurs());
-    dispatch(listStock());
-    dispatch(listAchats());
+            localStorage.setItem("carts", JSON.stringify(carts));
+            dispatch(listFournisseurs());
+            dispatch(listStock());
+            dispatch(listAchats());
     }, [carts,dispatch]);
     return (
         <div className='achat'>

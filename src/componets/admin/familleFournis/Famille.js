@@ -7,7 +7,8 @@ import Tablee from './Tablee';
 import FadeLoader from "react-spinners/FadeLoader"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useDownloadExcel } from 'react-export-table-to-excel';
+import { useRef } from 'react';
 const Famille = () => {
     const dispatch = useDispatch();
     const famillelist = useSelector((state) => state.famillelist);
@@ -18,12 +19,14 @@ const Famille = () => {
     const { error: errorDelete, success: successDelete } = familleSupprimer;
     const { error: errorCreate, success: successCreate, familles: famille } = familleAjouter;
     const { error: errorModifer, success: successMofier } = familleModifier;
-    console.log(familles);
-    useEffect(async () => {
-        if (successCreate) {
-            alert("salut creation");
-            toast.success("Success Notification !");
-        }
+    const tableRef = useRef(null);
+    const { onDownload } = useDownloadExcel({
+        currentTableRef: tableRef.current,
+        filename: 'Medicament',
+        sheet: 'Users'
+    });
+    
+    useEffect(async () => {        
         dispatch(listFamille());
     }, [dispatch, successDelete, successCreate, famille, successMofier]);
 
@@ -39,6 +42,7 @@ const Famille = () => {
                             size={150} />
                     </div>
                     : <div className=''>
+                    <button className='btn btn-sm btnCsv' onClick={onDownload}>Exporter Csv</button>
                         <Tablee familles={familles} error={errorCreate} />
                     </div>
             }

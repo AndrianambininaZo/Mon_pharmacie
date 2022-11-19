@@ -1,0 +1,23 @@
+import { VENTE_AJOUTER_FAIL, VENTE_AJOUTER_REQUEST, VENTE_AJOUTER_SUCCESS } from "../constants/VenteConstant";
+
+export const venteAjouterReducer=(state={},actios)=>{
+    switch(actios.type){
+        case VENTE_AJOUTER_REQUEST:
+            return {
+                loading:true, 
+            };
+        case VENTE_AJOUTER_SUCCESS:
+            return {
+                loading:false,
+                 success:true,
+                 ventes:actios.payload
+                };
+        case VENTE_AJOUTER_FAIL:
+            return {
+                loading:false,
+                 error:actios.payload
+                };
+        default:
+            return state;        
+    }
+}

@@ -1,6 +1,6 @@
 import { ACHAT_AJOUTER_FAIL, ACHAT_AJOUTER_REQUEST, ACHAT_AJOUTER_SUCCESS, ACHAT_LIST_FAIL, ACHAT_LIST_REQUEST, ACHAT_LIST_SUCCESS } from "../constants/AchatConstant";
 
-//famille Ajouter
+//Achat Ajouter
 export const achatAjouterReducer=(state={},actios)=>{
     switch(actios.type){
         case ACHAT_AJOUTER_REQUEST:

@@ -1,0 +1,28 @@
+.mainModalVente{
+    width: 30%;
+    position: absolute;
+    -webkit-box-shadow: -2px -5px 18px -8px #000000; 
+        box-shadow: -2px -5px 18px -8px #000000;
+        border-radius: 10px;
+    top:15.3%;
+    left: 30%;
+    background-color: white;
+    .top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 8vh;
+        border-bottom: 2px solid #655;
+        .title{
+            padding: 4px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .labelferme{
+            font-size: 25px;
+            font-weight: bold;
+            padding-right: 5px;
+            cursor: pointer;        
+        }
+    }
+}

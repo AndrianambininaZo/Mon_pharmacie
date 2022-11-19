@@ -3,35 +3,13 @@
     align-items: center;
     justify-content: center;
 }
-.medicament{
-    margin: .7rem;
-    padding: .7rem;
-    .top{
+.mainMedicament{
+    margin: .8rem;
+    padding: .8rem;
+    .medicamentTop{
         display: flex;
         align-items: center;
         justify-content: space-between;
-        span{
-            font-size: 16px;
-            font-weight: bold;
-            border-bottom:1px solid #555;
-        }
-        .button{
-            display: flex;
-            justify-content: end;
-            .btnCsv{
-                background-color: aquamarine;
-                margin-right:.5rem ;
-                border-radius: 5px;
-            }
-            input{
-                border-radius: 5px;
-                border: 1px solid #555;
-                margin-right:.5rem ;
-            }
-        }
-    }
-    .maiTtable{
-        margin-top: .5rem;
-       
+        margin-bottom: .8rem;
     }
 }

@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { familleAjouterReducer, familleListReducer, familleModifierReducer, familleSupprimerReducer } from "./FamilleReducer";
 import { fournisseurAjouterReducer, fournisseurListReducer, fournisseurSupprimerReducer } from "./FournisseurReducer";
-import { medicamentAjouterReducer, medicamentListReducer, medicamentSupprimerReducer } from "./MediamentReducer";
-import { stockListReducer } from "./StockReducer";
-import { panierAjouterReducer, panierListReducer } from "./PanierAchatReducer";
+import { medicamentAjouterReducer, medicamentFilterReducer, medicamentListReducer, medicamentSupprimerReducer } from "./MediamentReducer";
+import { stockListReducer, stokFilterReducer } from "./StockReducer";
 import { achatAjouterReducer, achatListReducer } from "./AchatReducer";
-import { commandeAjouterReducer } from "./CommandeReducer";
+import { commandeAjouterReducer, commandeListReducer } from "./CommandeReducer";
+import { employerAjouterReducer, employerListReducer } from "./EmployerReducer";
+import { venteAjouterReducer } from "./VenteReducer";
+import { venteMedicamentAjouterReducer } from "./VentMedicamentReducer";
 
 const reducer= combineReducers({ 
     famillelist:familleListReducer,
@@ -20,12 +22,17 @@ const reducer= combineReducers({
     medicamentAjouter:medicamentAjouterReducer,
     medicamentlist:medicamentListReducer,
     medicamentSupprimer: medicamentSupprimerReducer ,
+    medicamentFilter:medicamentFilterReducer,
     stockList:stockListReducer ,
-    panierAjouter:panierAjouterReducer,
-    panierList:panierListReducer,
+    stocksFilterList:stokFilterReducer,
     ajouteAchat:achatAjouterReducer,
     achatList:achatListReducer,
     ajouteCommande:commandeAjouterReducer,
+    commandeList:commandeListReducer,
+    ajouteEployer:employerAjouterReducer,
+    emploerlist:employerListReducer,
+    venteAjouter:venteAjouterReducer,
+    venteMedicamentAjouter:venteMedicamentAjouterReducer
 
 });
 

@@ -30,7 +30,7 @@ const TableAchat = ({stocks,ajouterPanier}) => {
                         <td>{res.nom}</td>
                         <td>{res.qte}</td>
                         <td>
-                            <button className='btn btn-secondary' onClick={()=>AppeleModal(res)}><AddShoppingCartIcon/></button>
+                            <button className='btn btn-sm' onClick={()=>AppeleModal(res)}><AddShoppingCartIcon style={{ color: 'blue' }}/></button>
                         </td>
                     </tr>
                     )
