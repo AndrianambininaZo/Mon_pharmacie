@@ -20,12 +20,16 @@ import AchatListe from './componets/admin/achat/AchatListe';
 import DetailCommande from './componets/admin/achat/DetailCommande';
 import VenteSans from './componets/admin/vente/VenteSans';
 import VenteAvec from './componets/admin/vente/VenteAvec';
+import ListeVente from './componets/admin/vente/ListeVente';
+import DetailVente from './componets/admin/vente/DetailVente';
+import Test from './componets/admin/vente/Test';
 const App = () => {
   axios.defaults.baseURL = 'https://localhost:7036/';
   return (
     <div className='app'>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/test' element={<Test/>} />
         <Route path='admin' element={<MasterLayout/>}>
           <Route index element={<Dashboard/>} />
           <Route path='medicament' element={<Medicament/>} />
@@ -39,7 +43,8 @@ const App = () => {
           <Route path='achat' element={<AchatListe/>}/>
           <Route path='detailCommande/:id' element={<DetailCommande/>}/>
           <Route path='ventesans' element={<VenteSans/>}/>
-          <Route path='venteavec' element={<VenteAvec/>}/>
+          <Route path='listesans' element={<ListeVente/>}/>
+          <Route path='detailVente/:id' element={<DetailVente/>}/>
         </Route>
         <Route path='*' element={<PageNot/>} />        
       </Routes>

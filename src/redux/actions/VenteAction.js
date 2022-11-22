@@ -1,5 +1,5 @@
 import axios from "axios";
-import { VENTE_AJOUTER_FAIL, VENTE_AJOUTER_REQUEST, VENTE_AJOUTER_SUCCESS } from "../constants/VenteConstant";
+import { VENTE_AJOUTER_FAIL, VENTE_AJOUTER_REQUEST, VENTE_AJOUTER_SUCCESS, VENTE_LIST_FAIL, VENTE_LIST_REQUEST, VENTE_LIST_SUCCESS } from "../constants/VenteConstant";
 
 //ajouter Achat
 export const AjouterVente=(idEmpyoyer,Achat)=>async (dispatch)=>{
@@ -22,6 +22,30 @@ export const AjouterVente=(idEmpyoyer,Achat)=>async (dispatch)=>{
             
         })
 
+    }
+}
+
+//List achat
+export const listVentes=()=>async (dispatch)=>{
+    try {
+        dispatch({
+            type:VENTE_LIST_REQUEST
+        })
+
+        const {data}=await axios.get('Vente/All');
+        dispatch({
+            type:VENTE_LIST_SUCCESS,
+            payload:data
+        })
+    } catch (errors) {
+        dispatch({
+            type:VENTE_LIST_FAIL,
+            payload:
+            errors.response && errors.response.data.message 
+            ? errors.response.data.message
+            : errors.response,
+        })
+        
     }
 }
         

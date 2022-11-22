@@ -50,7 +50,7 @@ const Sidebar = () => {
             
           } 
           <li className='li'>
-            <Link to='/admin/stock'><HomeIcon className='incon' />Stock</Link>
+            <Link to='/admin/stock'><InventoryIcon className='incon' />Stock</Link>
           </li>          
           <span className='title'>USERFUL</span>
           <li className='li'>

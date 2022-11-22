@@ -8,8 +8,8 @@ import { stockListReducer, stokFilterReducer } from "./StockReducer";
 import { achatAjouterReducer, achatListReducer } from "./AchatReducer";
 import { commandeAjouterReducer, commandeListReducer } from "./CommandeReducer";
 import { employerAjouterReducer, employerListReducer } from "./EmployerReducer";
-import { venteAjouterReducer } from "./VenteReducer";
-import { venteMedicamentAjouterReducer } from "./VentMedicamentReducer";
+import { venteAjouterReducer, venteListReducer } from "./VenteReducer";
+import { detailVenteListReducer, venteMedicamentAjouterReducer } from "./VentMedicamentReducer";
 
 const reducer= combineReducers({ 
     famillelist:familleListReducer,
@@ -32,7 +32,9 @@ const reducer= combineReducers({
     ajouteEployer:employerAjouterReducer,
     emploerlist:employerListReducer,
     venteAjouter:venteAjouterReducer,
-    venteMedicamentAjouter:venteMedicamentAjouterReducer
+    venteMedicamentAjouter:venteMedicamentAjouterReducer,
+    venteList:venteListReducer,
+    detailVenteList:detailVenteListReducer
 
 });
 

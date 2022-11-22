@@ -1,0 +1,31 @@
+.detailVente{
+    margin: 1rem;
+    padding-top: 1rem;
+    .topDetail{
+        p{
+            
+            span{
+                font-weight: bold;
+            }
+        }
+        
+
+    }
+    ul{
+        text-decoration: none;
+        border: .8px solid aliceblue;
+        border-radius: 6px;
+        li{
+            display: flex;
+            align-items: center;
+            p{
+                flex:1;
+                font-size: 12px;
+                span{
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

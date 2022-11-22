@@ -26,7 +26,6 @@ const VenteSans = () => {
     const motantRendue=montaVerse? montaVerse - montaTotal: 0;
     const [modePayement, setModePayement]=useState('')
     const dispatch=useDispatch();
-
     //valider le vente de client
     const valideVente=(montantTotale,qteTotal)=>{
         const today = new Date();
@@ -70,14 +69,15 @@ const VenteSans = () => {
 
     useEffect(async () => {
         localStorage.setItem("ventes", JSON.stringify(ventes));
+        
     }, [ventes]);
     return (
         <div className='venteSans'>
             <div className='topS'>
-                <span>Gestions des ventes</span>
+                <span>Bon de commande</span>
                 <div className='numVente'>
                     <span>No:</span>
-                    <input type="text" readOnly />
+                    <input type="text" readOnly value={3} />
                 </div>
             </div>
             <div className="informationVente">

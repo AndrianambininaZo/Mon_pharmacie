@@ -8,6 +8,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+
 export const data=[
    {
         title:'Medicaments',
@@ -65,8 +66,13 @@ export const data=[
             {
                 title:'Sans Prise',
                 path:'ventesans',
-                Incon:ListAltIcon,
+                Incon:ShoppingCartIcon,
             },
+            {
+                title:'Liste Vente',
+                path:'listesans',
+                Incon:ListAltIcon,
+            }
            
         ]
     }
