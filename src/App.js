@@ -23,6 +23,8 @@ import VenteAvec from './componets/admin/vente/VenteAvec';
 import ListeVente from './componets/admin/vente/ListeVente';
 import DetailVente from './componets/admin/vente/DetailVente';
 import Test from './componets/admin/vente/Test';
+import Statistique from './componets/admin/Statistique/Statistique';
+import Notification from './componets/admin/notification/Notification';
 const App = () => {
   axios.defaults.baseURL = 'https://localhost:7036/';
   return (
@@ -32,7 +34,9 @@ const App = () => {
         <Route path='/test' element={<Test/>} />
         <Route path='admin' element={<MasterLayout/>}>
           <Route index element={<Dashboard/>} />
+          <Route path='statistique' element={<Statistique/>} />
           <Route path='medicament' element={<Medicament/>} />
+          <Route path='notification' element={<Notification/>} />
           <Route path='famille' element={<Famille/>} />
           <Route path='medicament' element={<Medicament/>} />
           <Route path='fournisseur' element={<Fournisseur/>} />

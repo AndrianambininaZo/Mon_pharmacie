@@ -42,7 +42,7 @@ const Sidebar = () => {
             <Link to='/admin'><HomeIcon className='incon' />Dashboard</Link>
           </li>
           <li className='li'>
-            <Link to='/admin'><AnalyticsIcon className='incon' />Stat</Link>
+            <Link to='/admin/statistique'><AnalyticsIcon className='incon' />Stat</Link>
           </li>
           <span className='title'>SERVICE</span>
           {
@@ -54,7 +54,7 @@ const Sidebar = () => {
           </li>          
           <span className='title'>USERFUL</span>
           <li className='li'>
-            <Link to='/admin'><NotificationsNoneIcon className='incon' />Notification</Link>
+            <Link to='/admin/notification'><NotificationsNoneIcon className='incon' />Notification</Link>
           </li>
           <li className='li'>
             <Link to='/admin/parametre'><SettingsIcon className='incon' />Paramètres</Link>

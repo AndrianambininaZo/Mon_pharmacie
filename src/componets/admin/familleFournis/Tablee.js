@@ -104,8 +104,7 @@ const Tablee = (props) => {
         <div className='familleTable'>
             <div className='tablee'>
                 <label className='title'>Liste de tous familles</label>
-                {
-                    familless.length > 0 ?
+                
                         <DataTable                        
                             columns={columns}
                             data={familless}
@@ -125,9 +124,9 @@ const Tablee = (props) => {
                             }
 
 
-                        />: <p>Il n'y a pas de famille</p>
+                        />
 
-                }
+                
 
             </div>
             <div className='forme'>

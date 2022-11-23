@@ -11,10 +11,29 @@ import Chart from './chart/Chart';
 import { useDispatch, useSelector } from 'react-redux';
 import { listMedicament } from '../../redux/actions/MedicamentsAction';
 import { listStock } from '../../redux/actions/StockAction';
+import { listVentes } from '../../redux/actions/VenteAction';
+import { DataArray } from '@mui/icons-material';
 const Dashboard = () => {
+    const today = new Date();
+    const dd = String(today. getDate()). padStart(2, '0');// afara ----padEnd(), 
+    const mois = String(today. getMonth() + 1). padStart(2, '0'); //January is 0!
+    const yyyy = today. getFullYear();
+    const DateEntre =yyyy +'-' + mois +'-'+ dd;
+
+
     const medicamentlist=useSelector((state)=>state.medicamentlist);
     const stockList=useSelector((state)=>state.stockList);
     const achatList = useSelector((state) => state.achatList);
+    const venteList = useSelector((state) => state.venteList);    
+    const {ventes}=venteList;
+    const venteAujourdui=ventes.filter(res=>{
+        return res.date=== DateEntre;
+    });
+    const totalVente=venteAujourdui.reduce((prev,current)=>
+    prev +current.montantTotal, 0
+
+    );    
+    
     const { achats } = achatList;
     const {medicaments}=medicamentlist;
     const {stocks,loading}=stockList;
@@ -30,6 +49,7 @@ const Dashboard = () => {
     useEffect(async()=>{
         dispatch(listStock());
         dispatch(listMedicament());
+        dispatch(listVentes());
     },[dispatch]);
     return (
         <div className='dasboard'>
@@ -66,7 +86,7 @@ const Dashboard = () => {
                     <div className='left'>
                         <span className='title'>Achat</span>
                         <span className='counter'>{coutAchat}</span>
-                        <Link to='/admin/achat' className='link'>Details achats</Link>
+                        <Link to='/admin/listesans' className='link'>Details achats</Link>
                     </div>
                     <div className='right'>
                         <div className='pourcentage positive'>
@@ -79,7 +99,7 @@ const Dashboard = () => {
                 <div className='widget'>
                     <div className='left'>
                         <span className='title'>Vente</span>
-                        <span className='counter'>{45}</span>
+                        <span className='counter'>{totalVente}$</span>
                         <Link to='/admin/medicament' className='link'>Details Vente</Link>
                     </div>
                     <div className='right'>
@@ -92,7 +112,7 @@ const Dashboard = () => {
                 </div>
             </div>
             <div className='charts'>
-            <Featured/>
+            <Featured total={totalVente}/>
             <Chart/>              
             </div>           
         </div>

@@ -11,7 +11,7 @@ const DetailVente = () => {
     const {detailVente}=detailVenteList
     const {id}=useParams();
     const details=detailVente.filter(res=>{
-        return res.idVente== id;
+        return res.idVente== 5;
     })
     useEffect(async()=> {
         dispatch(listDetailVente())
