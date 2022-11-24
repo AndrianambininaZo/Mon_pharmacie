@@ -25,7 +25,7 @@ const DropNav = ({ item }) => {
                 <Link key={index} to={child.path}><child.Incon className='inconLink'/>{child.title}</Link>              
                 )
             
-          }
+             }
 
             </div>
         </div>

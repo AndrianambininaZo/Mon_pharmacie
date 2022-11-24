@@ -9,7 +9,44 @@
     .medicamentTop{
         display: flex;
         align-items: center;
-        justify-content: space-between;
         margin-bottom: .8rem;
+        justify-content: space-between;
+       .button{
+            display: flex;
+            input{
+                height: 5vh;
+
+            }
+            .btn-success{
+                height: 5vh;
+            }
+           .export{
+            margin-left: .5rem;
+            margin-right: .5rem;
+            .btnCsv{
+
+                    background-color: rgb(108, 112, 108);  
+                }
+            .select{
+                -webkit-box-shadow: -2px -5px 18px -8px #000000; 
+                box-shadow: -2px -5px 18px -8px #000000;               
+                position: absolute;
+                background-color: white;                               
+                 
+                .span{
+                    display: flex;
+                flex-direction: column;
+               margin: 1rem;
+               span{
+                &:hover{
+                    cursor: pointer;
+                }
+               }
+                }              
+
+            }
+
+           }
+        }
     }
 }
