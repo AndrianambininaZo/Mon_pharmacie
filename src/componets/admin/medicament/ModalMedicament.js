@@ -31,7 +31,7 @@ const ModalMedicament = ({ openModal,familles }) => {
             dateProduction: dateProduction,
             datePeremption: datePeremption,
             prixAchat: prixAchat,
-            prixVente:prixVente
+            prixVente:prixVente,
           }
         if (stock < 0 || prixAchat < 0 || !famille) {
             return;

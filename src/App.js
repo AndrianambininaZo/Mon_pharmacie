@@ -25,6 +25,7 @@ import DetailVente from './componets/admin/vente/DetailVente';
 import Test from './componets/admin/vente/Test';
 import Statistique from './componets/admin/Statistique/Statistique';
 import Notification from './componets/admin/notification/Notification';
+import Profil from './componets/admin/profil/Profil';
 const App = () => {
   axios.defaults.baseURL = 'https://localhost:7036/';
   return (
@@ -37,6 +38,7 @@ const App = () => {
           <Route path='statistique' element={<Statistique/>} />
           <Route path='medicament' element={<Medicament/>} />
           <Route path='notification' element={<Notification/>} />
+          <Route path='profil' element={<Profil/>} />
           <Route path='famille' element={<Famille/>} />
           <Route path='medicament' element={<Medicament/>} />
           <Route path='fournisseur' element={<Fournisseur/>} />

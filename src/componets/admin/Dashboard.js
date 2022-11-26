@@ -98,7 +98,7 @@ const Dashboard = () => {
                 </div>
                 <div className='widget'>
                     <div className='left'>
-                        <span className='title'>Vente</span>
+                        <span className='title'>Vente(AuJourd'hui)</span>
                         <span className='counter'>{totalVente}$</span>
                         <Link to='/admin/medicament' className='link'>Details Vente</Link>
                     </div>

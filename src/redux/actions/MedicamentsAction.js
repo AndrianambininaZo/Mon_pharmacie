@@ -2,6 +2,9 @@ import axios from "axios"
 import { MEDICAMENT_AJOUTER_FAIL, MEDICAMENT_AJOUTER_REQUEST, MEDICAMENT_AJOUTER_SUCCESS,
      MEDICAMENT_FILTER_FAIL, MEDICAMENT_FILTRER_REQUEST, MEDICAMENT_FILTRER_SUCCESS, 
      MEDICAMENT_LIST_FAIL, MEDICAMENT_LIST_REQUEST, MEDICAMENT_LIST_SUCCESS,
+      MEDICAMENT_MODIFIER_FAIL,
+      MEDICAMENT_MODIFIER_REQUEST,
+      MEDICAMENT_MODIFIER_SUCCESS,
       MEDICAMENT_SUPPRIMER_FAIL, MEDICAMENT_SUPPRIMER_REQUEST, MEDICAMENT_SUPPRIMER_SUCCESS
      } from "../constants/MedicammentConstant";
 export const AjouterMedicament=(qte,familleId,dataa)=>async (dispatch)=>{
@@ -109,6 +112,29 @@ export const filtrerMedicament=(nom)=>async (dispatch)=>{
             errors.response && errors.response.data.message 
             ? errors.response.data.message
             : errors.response,
+        })
+        
+    }
+}
+
+//Modifier fmedicament
+export const ModifierMedicament=(donne)=>async (dispatch)=>{
+    try {
+        dispatch({
+            type:MEDICAMENT_MODIFIER_REQUEST
+        })
+
+        const {data}=await axios.put('Medicament/'+donne.id,donne);
+        dispatch({
+            type:MEDICAMENT_MODIFIER_SUCCESS,
+            payload:data
+        })
+    } catch (errors) {
+        const message="il y a un erreur de champs"
+        dispatch({
+            type:MEDICAMENT_MODIFIER_FAIL,
+            payload:errors.errorMessage
+            
         })
         
     }

@@ -1,8 +1,9 @@
+import { useSelect } from '@mui/base';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FadeLoader from "react-spinners/FadeLoader"
-import { AjouterVente } from '../../../redux/actions/VenteAction';
+import { AjouterVente, listVentes } from '../../../redux/actions/VenteAction';
 import { AjouterVentMedicament } from '../../../redux/actions/VenteMedicamentAction';
 import Paniervente from './Paniervente';
 import TableVenteSans from './TableVenteSans';
@@ -18,16 +19,22 @@ const getVenteS = () => {
 }
 
 const VenteSans = () => {
-    const [ventes, setVentes] = useState(getVenteS);
-    const montaTotal=ventes.reduce((prev,curr)=>parseInt(prev)  + parseInt(curr.prixVente),0 );
+    const [cartventes, setCartVentes] = useState(getVenteS);
+    const montaTotal=cartventes.reduce((prev,curr)=>parseInt(prev)  + parseInt(curr.prixVente),0 );
     const totalRemise=0;
     const netPayer=montaTotal + totalRemise;
     const [montaVerse, setMontantVerse]=useState('');
     const motantRendue=montaVerse? montaVerse - montaTotal: 0;
     const [modePayement, setModePayement]=useState('')
+    const venteList=useSelector(state=>state.venteList)
+    const {ventes}=venteList
+    const coutVente=ventes.length+ 1
+    
     const dispatch=useDispatch();
     //valider le vente de client
     const valideVente=(montantTotale,qteTotal)=>{
+        
+        
         const today = new Date();
         const dd = String(today. getDate()). padStart(2, '0');// afara ----padEnd(), 
         const mois = String(today. getMonth() + 1). padStart(2, '0'); //January is 0!
@@ -52,32 +59,32 @@ const VenteSans = () => {
         }else{
             
           dispatch(AjouterVente(1,data));
-           ventes.map(res=>{
-           dispatch(AjouterVentMedicament(res.qtVente,res.id,res.prixVente))
+           cartventes.map(res=>{
+           dispatch(AjouterVentMedicament(res.qtVente,res.id,coutVente,res.prixVente))
            })
            alert("mety")
-            setVentes([]);
+            setCartVentes([]);
         }
 
     }
 
     //Ajouter medicament au panier
     const ajouterPanier=(vente)=>{
-        setVentes([...ventes,vente])
+        setCartVentes([...cartventes,vente])
     }
-    console.log(ventes);
 
     useEffect(async () => {
-        localStorage.setItem("ventes", JSON.stringify(ventes));
+        localStorage.setItem("ventes", JSON.stringify(cartventes));
+        dispatch(listVentes());
         
-    }, [ventes]);
+    }, [cartventes]);
     return (
         <div className='venteSans'>
             <div className='topS'>
                 <span>Bon de commande</span>
                 <div className='numVente'>
                     <span>No:</span>
-                    <input type="text" readOnly value={3} />
+                    <input type="text" readOnly value={coutVente} />
                 </div>
             </div>
             <div className="informationVente">
@@ -116,7 +123,7 @@ const VenteSans = () => {
             </div>
             <div className='containirVente'>
                 <TableVenteSans ajouterPanier={ajouterPanier} />
-                <Paniervente ventes={ventes} valideVente={valideVente}/>
+                <Paniervente ventes={cartventes} valideVente={valideVente}/>
             </div>
         </div>
     );

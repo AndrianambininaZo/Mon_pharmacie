@@ -1,4 +1,4 @@
-import { MEDICAMENT_AJOUTER_FAIL, MEDICAMENT_AJOUTER_REQUEST, MEDICAMENT_AJOUTER_RESET, MEDICAMENT_AJOUTER_SUCCESS, MEDICAMENT_FILTER_FAIL, MEDICAMENT_FILTRER_REQUEST, MEDICAMENT_FILTRER_SUCCESS, MEDICAMENT_LIST_FAIL, MEDICAMENT_LIST_REQUEST, MEDICAMENT_LIST_SUCCESS, MEDICAMENT_SUPPRIMER_FAIL, MEDICAMENT_SUPPRIMER_REQUEST, MEDICAMENT_SUPPRIMER_SUCCESS } from "../constants/MedicammentConstant";
+import { MEDICAMENT_AJOUTER_FAIL, MEDICAMENT_AJOUTER_REQUEST, MEDICAMENT_AJOUTER_RESET, MEDICAMENT_AJOUTER_SUCCESS, MEDICAMENT_FILTER_FAIL, MEDICAMENT_FILTRER_REQUEST, MEDICAMENT_FILTRER_SUCCESS, MEDICAMENT_LIST_FAIL, MEDICAMENT_LIST_REQUEST, MEDICAMENT_LIST_SUCCESS, MEDICAMENT_MODIFIER_FAIL, MEDICAMENT_MODIFIER_REQUEST, MEDICAMENT_MODIFIER_SUCCESS, MEDICAMENT_SUPPRIMER_FAIL, MEDICAMENT_SUPPRIMER_REQUEST, MEDICAMENT_SUPPRIMER_SUCCESS } from "../constants/MedicammentConstant";
 
 //famille Ajouter
 export const medicamentAjouterReducer=(state={},actios)=>{
@@ -85,6 +85,30 @@ export const medicamentFilterReducer=(state={medicamentsFilter:[]},action)=>{
             return {
                 loading:false,
                  error:action.payload
+                };
+        default:
+            return state;        
+    }
+}
+
+
+//medicament Modifier
+export const medicamentModifierReducer=(state={},actios)=>{
+    switch(actios.type){
+        case MEDICAMENT_MODIFIER_REQUEST:
+            return {
+                loading:true, 
+            };
+        case MEDICAMENT_MODIFIER_SUCCESS:
+            return {
+                loading:false,
+                 success:true,
+                 medicament:actios.payload
+                };
+        case MEDICAMENT_MODIFIER_FAIL:
+            return {
+                loading:false,
+                 error:actios.payload
                 };
         default:
             return state;        

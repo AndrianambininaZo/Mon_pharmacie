@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
+import { useDispatch } from 'react-redux';
+import { ModifierStock } from '../../../redux/actions/StockAction';
 
 const TableStock = ({ stocks }) => {
     const [id , setId]=useState('');
@@ -10,7 +12,9 @@ const TableStock = ({ stocks }) => {
     const qteFinal= parseInt(qte) + parseInt(qteAjouter) + 0;
     const disabled =qteFinal < 50 ? true:false;
     const [error, setError]=useState('');
+    const dispatch=useDispatch();
     const handlerModifier=(id, idMed, medicament, qte)=>{
+
         
         setId(id);
         setIdMed(idMed);
@@ -26,6 +30,12 @@ const TableStock = ({ stocks }) => {
         }
         else {
             setError('');
+            const data={
+                id:id,
+                QteMedicament:qteFinal
+            }
+            dispatch(ModifierStock(data));
+
            
         }
     }
@@ -71,7 +81,7 @@ const TableStock = ({ stocks }) => {
             <div className='modifierStock'>
                 <form className='form' onSubmit={handlerSubmit}>
                 <label htmlFor="">{error}</label>
-                <input type="text" hidden value={id} onChange={(e)=> setId(e.target.value)} />                
+                <input type="text"  value={id} onChange={(e)=> setId(e.target.value)} />                
                 <input type="text" hidden value={idMed} onChange={(e)=> setIdMed(e.target.value)} />                
                     <div className='input'>
                         <label htmlFor="">Medicament:</label>

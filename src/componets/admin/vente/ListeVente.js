@@ -1,22 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { listVentes } from '../../../redux/actions/VenteAction';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useNavigate } from 'react-router-dom';
+import './listeVente.scss'
 
 const ListeVente = () => {
     const dispatch = useDispatch();
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     const venteList = useSelector(state => state.venteList);
     const { ventes } = venteList;
-    const coutVente=ventes.length;
+    const coutVente = ventes.length;
+    const [selectMois, setSelectMois] = useState('');
     console.log(coutVente);
-    const handlerDetail=(id)=>{
-        return navigate('/admin/detailVente/'+id);
+    const handlerDetail = (id) => {
+        return navigate('/admin/detailVente/' + id);
 
     }
+    const mois = [
+        { id: 1, nom: "Janvier" },
+        { id: 2, nom: "Fevrier" },
+        { id: 3, nom: "Mars" },
+        { id: 4, nom: "Avril" },
+        { id: 5, nom: "Mai" },
+        { id: 6, nom: "Juin" },
+        { id: 7, nom: "Juillet" },
+        { id: 8, nom: "Aout" },
+        { id: 9, nom: "Septabre" },
+        { id: 10, nom: "Octobre" },
+        { id: 11, nom: "Novembre" },
+        { id: 12, nom: "Decambre" },
+
+    ]
+
 
     useEffect(async () => {
         dispatch(listVentes());
@@ -24,7 +42,22 @@ const ListeVente = () => {
     }, [])
     return (
         <div className='listeVente'>
-            <div className=''>
+            <div className='listVenteTop'>
+                <span>Listes de vente</span>
+                <div className='recherche'>
+                    <select value={selectMois} onChange={(e) => setSelectMois(e.target.value)}>
+                        <option value="">-----Mois-----</option>
+                        {
+                            mois.map((res, index) =>
+                                <option value={res.id}>{res.nom}</option>
+                            )
+                        }
+                    </select>
+                    <select >
+                        <option value="">-----Annees----</option>
+                        <option value="">2022</option>
+                    </select>
+                </div>
             </div>
             <div className='tableVente'>
                 <table className='table table-bordered'>

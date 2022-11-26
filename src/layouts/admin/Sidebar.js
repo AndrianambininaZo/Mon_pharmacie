@@ -61,7 +61,7 @@ const Sidebar = () => {
           </li>
           <span className='title'>USER</span>
           <li className='li'>
-            <Link to='/admin'><AccountCircleIcon className='incon' />Profile</Link>
+            <Link to='/admin/profil'><AccountCircleIcon className='incon' />Profile</Link>
           </li>
           <li className='li'>
             <Link to='/admin' onClick={handleLogaout}><LogoutIcon className='incon' />Logout</Link>

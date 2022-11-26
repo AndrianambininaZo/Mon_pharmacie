@@ -2,14 +2,14 @@ import axios from "axios";
 import { VENTEMEDICAMENT_AJOUTER_FAIL, VENTEMEDICAMENT_AJOUTER_REQUEST, VENTEMEDICAMENT_AJOUTER_SUCCESS, VENTEMEDICAMENT_LIST_FAIL, VENTEMEDICAMENT_LIST_REQUEST, VENTEMEDICAMENT_LIST_SUCCESS } from "../constants/VentMedicamentConstant";
 
 //ajouter vente medicament
-export const AjouterVentMedicament=(qte,medicamentId,prix)=>async (dispatch)=>{
+export const AjouterVentMedicament=(qte,medicamentId,achatId,prix)=>async (dispatch)=>{
     try {
         dispatch({
             type:VENTEMEDICAMENT_AJOUTER_REQUEST
         })
       
-
-        const {data}=await axios.post('Vente/Medicament?qte='+ qte +'&medicId='+ medicamentId +'&prix=' + prix);
+        
+        const {data}=await axios.post('Commande/medicament?qte='+ qte +'&medicId='+ medicamentId +'&achatId=' + achatId +'&prix=' + prix);
         dispatch({
             type:VENTEMEDICAMENT_AJOUTER_SUCCESS,
             payload:data

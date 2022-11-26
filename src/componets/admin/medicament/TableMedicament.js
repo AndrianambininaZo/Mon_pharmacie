@@ -12,7 +12,7 @@ const TableMedicament = ({ medicaments, tableRef}) => {
     const famillelist = useSelector((state) => state.famillelist);
     const { familles } = famillelist;
     const [show, setShow] = useState(false);
-    const [pageSize, setPage] = useState(1);
+    const [pageSize, setPage] = useState(6);
     const [currentpage, setcurrentpage] = useState(1);
     const [medicamentPage, setMedicamentPage] = useState([]);
     const [dataEditer, setDataEditer] = useState("");

@@ -7,10 +7,12 @@ import './stock.scss';
 const Stock = () => {
     const dispatch=useDispatch();
     const stockList=useSelector((state)=>state.stockList);
+    const stockEditer=useSelector((state)=>state.stockEditer);
     const {stocks,loading}=stockList;
+    const {success}=stockEditer;
     useEffect(async ()=>{
         dispatch(listStock());
-    },[])
+    },[dispatch,success])
     return (
         <div className='stock'>
         <TableStock stocks={stocks}/>

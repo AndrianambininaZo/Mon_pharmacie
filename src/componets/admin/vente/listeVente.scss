@@ -1,0 +1,19 @@
+.listeVente{
+    margin: 1rem;
+    padding-top: 1rem;
+    .listVenteTop{
+        margin-bottom: .5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        span{
+            border-bottom: .5px solid aliceblue;
+        }
+        .recherche{
+            select{
+                border-radius: 10px;
+                margin-left: .5rem;
+            }
+        }
+    }
+}
