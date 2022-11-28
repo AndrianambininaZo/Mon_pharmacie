@@ -7,6 +7,7 @@ import _ from "lodash";
 import ModalMedicament from './ModalMedicament';
 import { listFamille } from '../../../redux/actions/FamilleAction';
 import ModalEditer from './ModalEditer';
+import './tableMedicament.scss'
 const TableMedicament = ({ medicaments, tableRef}) => {
     const dispatch = useDispatch();
     const famillelist = useSelector((state) => state.famillelist);
@@ -57,7 +58,7 @@ const TableMedicament = ({ medicaments, tableRef}) => {
     }
 
     return (
-        <div className='maiTtable'>            
+        <div className='mainTable'>            
             <table className='table table-bordered' ref={tableRef}>
                 <thead>
                     <tr>

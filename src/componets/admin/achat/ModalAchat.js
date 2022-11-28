@@ -21,7 +21,8 @@ const ModalAchat = ({medicament,openModal,ajouterPanier}) => {
             id:id,
             nom:nom,
             qte:parseInt(qteAcheter),
-            montant:parseInt(prix)
+            montant:parseInt(prix),
+            qteFinal:qteTotal
 
         }
         ajouterPanier(data);

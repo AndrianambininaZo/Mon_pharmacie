@@ -8,7 +8,9 @@ const PanierAchat = ({ carts, valideAchat }) => {
   const qte = carts.reduce((prev, current) => parseInt(prev) + parseInt(current.qte), 0);
   const envoyerCart = () => {
     valideAchat(montTotal, qte);
-
+  }
+  const handlerEditer=(res)=>{
+    console.log(res);
   }
   return (
     <div className='panierAchat'>
@@ -24,7 +26,7 @@ const PanierAchat = ({ carts, valideAchat }) => {
                 <p className='qte'>Qte:<span>{res.qte}</span></p>
                 <p className='montant'>Montant:<span>{res.montant}</span></p>
                 <p>
-                  <button className='btn' style={{ color: "blue" }}><EditIcon /></button>
+                  <button className='btn' style={{ color: "blue" }} onClick={()=>handlerEditer(res)}><EditIcon /></button>
                   <button className='btn' style={{ color: "red" }}><DeleteIcon /></button>
                 </p>
               </li>

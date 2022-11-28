@@ -64,7 +64,12 @@ export const data=[
                 Incon:ShoppingCartIcon,
             },
             {
-                title:'Sans Prise',
+                title:'Liste',
+                path:'listesans',
+                Incon:ListAltIcon,
+            },
+            {
+                title:'Vente Direct',
                 path:'ventesans',
                 Incon:ShoppingCartIcon,
             },

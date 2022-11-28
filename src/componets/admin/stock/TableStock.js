@@ -81,7 +81,7 @@ const TableStock = ({ stocks }) => {
             <div className='modifierStock'>
                 <form className='form' onSubmit={handlerSubmit}>
                 <label htmlFor="">{error}</label>
-                <input type="text"  value={id} onChange={(e)=> setId(e.target.value)} />                
+                <input type="text" hidden  value={id} onChange={(e)=> setId(e.target.value)} />                
                 <input type="text" hidden value={idMed} onChange={(e)=> setIdMed(e.target.value)} />                
                     <div className='input'>
                         <label htmlFor="">Medicament:</label>

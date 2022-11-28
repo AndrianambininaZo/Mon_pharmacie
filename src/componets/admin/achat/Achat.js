@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { AjouterAchat, listAchats } from '../../../redux/actions/AchatAction';
 import { AjouterCommande } from '../../../redux/actions/CommandeAction';
 import { listFournisseurs } from '../../../redux/actions/FournisseurAction';
-import { listStock } from '../../../redux/actions/StockAction';
+import { listStock, ModifierStock } from '../../../redux/actions/StockAction';
 import './achat.scss';
 import PanierAchat from './PanierAchat';
 import TableAchat from './TableAchat';
@@ -53,7 +53,13 @@ const Achat = () => {
 
     }
     const ajouterPanier = (achat) => {
-        setCarts([...carts, achat])
+       
+                
+                
+           
+            setCarts([...carts, achat]); 
+        
+              
     }
     const valideAchat=(montTotal,qte)=>{
             const today = new Date();
@@ -79,8 +85,17 @@ const Achat = () => {
                 
             }else alert('ok');
 
-            carts.map((res)=>
-            dispatch(AjouterCommande(res.qte,res.id,4,res.montant))
+            carts.map((res)=>{
+                dispatch(AjouterCommande(res.qte,res.id,4,res.montant))
+                const stock={
+                    id:res.id,
+                    QteMedicament:res.qteFinal
+        
+                   }
+                   dispatch(ModifierStock(stock));
+
+            }           
+
             );        
             setCarts([]);
             
@@ -94,7 +109,7 @@ const Achat = () => {
             dispatch(listFournisseurs());
             dispatch(listStock());
             dispatch(listAchats());
-    }, [carts,dispatch]);
+    }, [carts,dispatch,successAchat]);
     return (
         <div className='achat'>
             <div className='topAchat'>

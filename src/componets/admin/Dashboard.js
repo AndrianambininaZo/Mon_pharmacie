@@ -77,7 +77,7 @@ const Dashboard = () => {
                     <div className='right'>
                         <div className='pourcentage positive'>
                             <KeyboardArrowDownIcon />
-                            {25} %
+                            
                         </div>
                         <InventoryIcon className='incon' style={{backgroundColor: "#C46210"}}/>
                     </div>
@@ -91,7 +91,7 @@ const Dashboard = () => {
                     <div className='right'>
                         <div className='pourcentage positive'>
                             <KeyboardArrowDownIcon />
-                            {25} %
+                            
                         </div>
                         <ShoppingCartIcon className='incon' style={{backgroundColor: "#84DE02"}}/>
                     </div>
@@ -105,7 +105,7 @@ const Dashboard = () => {
                     <div className='right'>
                         <div className='pourcentage positive'>
                             <KeyboardArrowDownIcon />
-                            {25} %
+                            
                         </div>
                         <PointOfSaleIcon className='incon' style={{backgroundColor: "aqua"}}/>
                     </div>

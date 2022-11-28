@@ -37,10 +37,7 @@ const Navbara = () => {
                         <NotificationsNoneIcon className='Incon' />
                         <div className='alerte'>{stockRemption}</div>
                     </div>
-                    <div className='item'>
-                        <ChatBubbleOutlineIcon className='Incon' /> 
-                        <div className='alerte'>4</div>                                             
-                    </div>
+                    
 
                 </div>
             </div>

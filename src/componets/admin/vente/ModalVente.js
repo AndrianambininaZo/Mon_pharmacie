@@ -16,7 +16,8 @@ const ModalVente = ({ openModal, medicament, ajouterPanier }) => {
             id: id,
             nom: nom,
             prixVente:prixVente,
-            qtVente:qtVente
+            qtVente:qtVente,
+            qtFinal:qteExistant - qtVente
         }
         if (qteActuel < 1) {
             return;            
@@ -34,23 +35,23 @@ const ModalVente = ({ openModal, medicament, ajouterPanier }) => {
             <div className='center'>
                 <form onSubmit={handlerSubmit}>
                     <div className='form'>
-                        <label>Nom</label>
+                        <label>Nom:</label>
                         <input type="text" value={nom} readOnly />
                     </div>
                     <div className='form'>
-                        <label>Qte existant</label>
+                        <label>Qte existant:</label>
                         <input type="text" value={qteExistant} readOnly />
                     </div>
                     <div className='form'>
-                        <label>Qte actuel</label>
+                        <label>Qte actuel:</label>
                         <input type="text" value={qteActuel} readOnly />
                     </div>
                     <div className='form'>
-                        <label>Qte Vente</label>
+                        <label>Qte Vente:</label>
                         <input type="text" required value={qtVente} onChange={(e) => setqtVente(e.target.value)} />
                     </div>
                     <div className='form'>
-                        <label>Prix vente</label>
+                        <label>Prix vente:</label>
                         <input type="text" value={prixVente} readOnly />
                     </div>
                     <div className='form'>

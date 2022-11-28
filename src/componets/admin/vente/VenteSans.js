@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import FadeLoader from "react-spinners/FadeLoader"
+import { ModifierStock } from '../../../redux/actions/StockAction';
 import { AjouterVente, listVentes } from '../../../redux/actions/VenteAction';
 import { AjouterVentMedicament } from '../../../redux/actions/VenteMedicamentAction';
 import Paniervente from './Paniervente';
@@ -59,8 +60,15 @@ const VenteSans = () => {
         }else{
             
           dispatch(AjouterVente(1,data));
+          alert("ok");
            cartventes.map(res=>{
-           dispatch(AjouterVentMedicament(res.qtVente,res.id,coutVente,res.prixVente))
+           dispatch(AjouterVentMedicament(res.qtVente,res.id,coutVente,res.prixVente));
+           const stock={
+            id:res.id,
+            QteMedicament:res.qtFinal
+
+           }
+           dispatch(ModifierStock(stock));
            })
            alert("mety")
             setCartVentes([]);
