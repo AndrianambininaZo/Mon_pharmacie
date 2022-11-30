@@ -52,24 +52,9 @@ export const data=[
     {
         title:'Vente',
         Incon:LocalShippingIcon,
-        children:[
+        children:[        
             {
-                title:'Client',
-                path:'client',
-                Incon:ListAltIcon,
-            },
-            {
-                title:'Avec Prise',
-                path:'venteavec',
-                Incon:ShoppingCartIcon,
-            },
-            {
-                title:'Liste',
-                path:'listesans',
-                Incon:ListAltIcon,
-            },
-            {
-                title:'Vente Direct',
+                title:'Vente',
                 path:'ventesans',
                 Incon:ShoppingCartIcon,
             },

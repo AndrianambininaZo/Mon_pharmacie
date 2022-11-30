@@ -34,7 +34,7 @@ export const filtrerStock=(nom)=>async (dispatch)=>{
         const {data}=await axios.get('Stock/All');
         const filter=data.filter(res=>{
             if (nom) {
-                return res.nom.toLowerCase().match(nom.toLowerCase());
+                return (res.nom.toLowerCase().match(nom.toLowerCase()));
             }else{
                 return data;
             }

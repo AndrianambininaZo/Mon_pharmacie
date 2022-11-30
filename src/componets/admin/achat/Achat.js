@@ -6,6 +6,7 @@ import { AjouterAchat, listAchats } from '../../../redux/actions/AchatAction';
 import { AjouterCommande } from '../../../redux/actions/CommandeAction';
 import { listFournisseurs } from '../../../redux/actions/FournisseurAction';
 import { listStock, ModifierStock } from '../../../redux/actions/StockAction';
+import swal from 'sweetalert';
 import './achat.scss';
 import PanierAchat from './PanierAchat';
 import TableAchat from './TableAchat';
@@ -53,13 +54,8 @@ const Achat = () => {
 
     }
     const ajouterPanier = (achat) => {
-       
-                
-                
-           
-            setCarts([...carts, achat]); 
-        
-              
+        setCarts([...carts, achat]);
+                    
     }
     const valideAchat=(montTotal,qte)=>{
             const today = new Date();
@@ -68,8 +64,9 @@ const Achat = () => {
             const yyyy = today. getFullYear();
             const DateEntre =yyyy +'-' + mm +'-'+ dd;  
         if (idFrs==='') {
-            alert('salection fourniseurs');
+            alert(`You rated us ${4}/3`);
             return
+            
             
         }else{            
             const achat={
@@ -81,9 +78,9 @@ const Achat = () => {
         }        
             dispatch(AjouterAchat(idFrs,achat));
             if (successAchat) {
-                alert("mety")
+                swal("Good job!", "You clicked the button!", "success");
                 
-            }else alert('ok');
+            }else swal("Good job!", "You clicked the button!", "success");;
 
             carts.map((res)=>{
                 dispatch(AjouterCommande(res.qte,res.id,4,res.montant))

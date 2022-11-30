@@ -38,9 +38,10 @@ const ModalMedicament = ({ openModal,familles }) => {
             
         }else{
             if(dateProduction===DateEntre){
-                alert('mitovy')
+                return;
+               
             }else{
-                alert("tsy mitov");
+                
             }
           dispatch(AjouterMedicament(stock,famille,dataa));
             handleClose();

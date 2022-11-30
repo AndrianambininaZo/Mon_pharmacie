@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import './medicement.scss';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ModalMedicament from './ModalMedicament';
 import { useDispatch } from 'react-redux';
 import { listFamille } from '../../../redux/actions/FamilleAction';
@@ -13,6 +14,9 @@ import FadeLoader from "react-spinners/FadeLoader"
 import { useDownloadExcel } from 'react-export-table-to-excel';
 import TableTous from './TableTous';
 const Medicament = () => {
+   
+        
+     
     const [recherche, setRecherche] = useState('');
     const [show, setShow] = useState(false);
     const dispatch = useDispatch();
@@ -32,9 +36,15 @@ const Medicament = () => {
         filename: filename,
         sheet: 'Users'
     });
-    
+    const showToast = () => {
+        toast("I am Tostify!")
+      };
     const [open , setOpen]=useState(false);
     useEffect(async () => {
+        if (success) {
+            toast.success("Enregistrer avec succes !");
+            
+        }
         dispatch(listMedicament(recherche));
         dispatch(listFamille());
     }, [dispatch, success, successSupprimer, recherche]);
@@ -76,7 +86,8 @@ const Medicament = () => {
             {
                 show && <ModalMedicament familles={familles} openModal={setShow} />
             }
-            <TableTous medicaments={medicaments} tableRef={tableRef}/>
+            <TableTous medicaments={medicaments} tableRef={tableRef}/>           
+            <ToastContainer />
 
         </div>
     );

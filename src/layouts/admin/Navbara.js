@@ -19,8 +19,11 @@ const Navbara = () => {
     const {stocks}=stockList;
     const dispatch=useDispatch();
     const stockRemption=stocks.filter((res)=>{
-        return (res.qte >= 4)
+        return (res.qte < 50)
     }).length;
+    
+    const alert=stockRemption < 1 ? "": "alerte" ;
+    const coutAlert=stockRemption < 1 ? "": stockRemption ;
     useEffect(()=>{
         dispatch(listStock());
     },[]);
@@ -35,7 +38,7 @@ const Navbara = () => {
                 <div className='items'>
                     <div className='item'>                        
                         <NotificationsNoneIcon className='Incon' />
-                        <div className='alerte'>{stockRemption}</div>
+                        <div className={alert}>{coutAlert}</div>
                     </div>
                     
 

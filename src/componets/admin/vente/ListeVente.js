@@ -14,7 +14,8 @@ const ListeVente = () => {
     const { ventes } = venteList;
     const coutVente = ventes.length;
     const [selectMois, setSelectMois] = useState('');
-    console.log(coutVente);
+    const [pageSize, setPage] = useState(6);
+   
     const handlerDetail = (id) => {
         return navigate('/admin/detailVente/' + id);
 
@@ -37,9 +38,9 @@ const ListeVente = () => {
 
 
     useEffect(async () => {
-        dispatch(listVentes());
+        dispatch(listVentes(selectMois));
 
-    }, [])
+    }, [selectMois])
     return (
         <div className='listeVente'>
             <div className='listVenteTop'>

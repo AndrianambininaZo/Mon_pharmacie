@@ -26,16 +26,24 @@ export const AjouterVente=(idEmpyoyer,vente)=>async (dispatch)=>{
 }
 
 //List achat
-export const listVentes=()=>async (dispatch)=>{
+export const listVentes=(mois)=>async (dispatch)=>{
     try {
         dispatch({
             type:VENTE_LIST_REQUEST
         })
 
         const {data}=await axios.get('Vente/All');
+        const filter=data.filter(res=>{
+            if (mois) {
+                return res.mois ==mois;
+            }else{
+                return data;
+            }
+            
+        })
         dispatch({
             type:VENTE_LIST_SUCCESS,
-            payload:data
+            payload:filter
         })
     } catch (errors) {
         dispatch({

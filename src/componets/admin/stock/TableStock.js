@@ -41,7 +41,7 @@ const TableStock = ({ stocks }) => {
     }
     return (
         <div className='maintock'>
-            <div className='tableStock'>
+            <div className='tableStock'>            
                 <table className='table table-bordered'>
                     <thead>
                         <tr>
@@ -82,7 +82,8 @@ const TableStock = ({ stocks }) => {
                 <form className='form' onSubmit={handlerSubmit}>
                 <label htmlFor="">{error}</label>
                 <input type="text" hidden  value={id} onChange={(e)=> setId(e.target.value)} />                
-                <input type="text" hidden value={idMed} onChange={(e)=> setIdMed(e.target.value)} />                
+                <input type="text" hidden value={idMed} onChange={(e)=> setIdMed(e.target.value)} /> 
+                <span>Stock un medicament</span>                             
                     <div className='input'>
                         <label htmlFor="">Medicament:</label>
                         <input type="text" readOnly value={medicament} onChange={(e)=> setMedicament(e.target.value)}/>

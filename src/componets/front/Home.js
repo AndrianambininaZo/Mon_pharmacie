@@ -35,11 +35,7 @@ const Home = () => {
             <div className='contenue'>
                 <div className='authe'>
                     <label className='title'>Athentification</label>
-                    <form onSubmit={hadleLogin} className=''>
-                        <select name="" id="" required>
-                            <option value="admin">Admin</option>
-                            <option value="admin">Caise</option>
-                        </select>
+                    <form onSubmit={hadleLogin} className=''>                        
                         <div className='input'>
                             <label>Email</label>                            
                             <input type="email"  placeholder='Email' required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />

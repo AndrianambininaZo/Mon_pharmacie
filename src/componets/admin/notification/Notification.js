@@ -11,6 +11,7 @@ const Notification = () => {
     const stockSeuil = stocks.filter(res => {
         return res.qte < 50;
     })
+    console.log(stockSeuil);
     useEffect(async () => {
         dispatch(listStock());
 
@@ -18,26 +19,28 @@ const Notification = () => {
     return (
         <div className='notification'>
             <div className=' medicamentNotf'>
+            <span>Medicament peremption</span>
                 <table className='table table-bordered'>
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Medicament</th>
                             <th>DatePeremption</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+
+                    </tbody>
                 </table>
             </div>
             <div className='stockNotf'>
+            <span>Stock insuffisante</span>
                 <table className='table table-bordered'>
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Medicament</th>
                             <th>Stock</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,16 +50,12 @@ const Notification = () => {
                                     <td>{index}</td>
                                     <td>{res.nom}</td>
                                     <td>{res.qte}</td>
-                                    <td>
-                                        <button>Nouveau</button>
-                                    </td>
                                 </tr>
                             )
                         }
                     </tbody>
                 </table>
             </div>
-            <div className='messageNotf'>mess</div>
         </div>
     );
 };

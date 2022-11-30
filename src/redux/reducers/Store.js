@@ -10,6 +10,7 @@ import { commandeAjouterReducer, commandeListReducer } from "./CommandeReducer";
 import { employerAjouterReducer, employerListReducer } from "./EmployerReducer";
 import { venteAjouterReducer, venteListReducer } from "./VenteReducer";
 import { detailVenteListReducer, venteMedicamentAjouterReducer } from "./VentMedicamentReducer";
+import { statMoisListReducer } from "./StatistiqueReducer";
 
 const reducer= combineReducers({ 
     famillelist:familleListReducer,
@@ -43,6 +44,9 @@ const reducer= combineReducers({
     venteMedicamentAjouter:venteMedicamentAjouterReducer,
     venteList:venteListReducer,
     detailVenteList:detailVenteListReducer,
+
+    //statistique
+    statMoisList:statMoisListReducer
    
     
 

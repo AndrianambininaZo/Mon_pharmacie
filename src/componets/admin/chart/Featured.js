@@ -12,11 +12,11 @@ const Featured = ({total}) => {
                 <span className='title'>Totale Revenue: {totalRevenue}</span>
             </div>
             <div className='center'>
-                <CircularProgressbar value={pourcentage} text={`${pourcentage}%`} strokeWidth={4} />
+                <CircularProgressbar value={pourcentage.toFixed(0)} text={`${pourcentage}%`} strokeWidth={4} />
             </div>
             <div className='bottom'>
                 <span className='title'>Total vente aujourd'hui</span>
-                <span className='montant'>{total} Ariaray</span>
+                <span className='montant'>${total}</span>
                 
             </div>
         </div>

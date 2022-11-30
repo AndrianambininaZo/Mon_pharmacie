@@ -54,7 +54,7 @@ const ModalEditer = ({ openModal, familles, Editer }) => {
             <div className='center'>
                 <form className='forms' onSubmit={handlerSubmit}>
                     <div className='form'>
-                        <input type="text" value={Editer.id} readOnly />
+                        <input type="text" hidden value={Editer.id} readOnly />
                     </div>
                     <div className='form'>
                         <label>Nom:</label>

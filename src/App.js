@@ -19,10 +19,8 @@ import Achat from './componets/admin/achat/Achat';
 import AchatListe from './componets/admin/achat/AchatListe';
 import DetailCommande from './componets/admin/achat/DetailCommande';
 import VenteSans from './componets/admin/vente/VenteSans';
-import VenteAvec from './componets/admin/vente/VenteAvec';
 import ListeVente from './componets/admin/vente/ListeVente';
 import DetailVente from './componets/admin/vente/DetailVente';
-import Test from './componets/admin/vente/Test';
 import Statistique from './componets/admin/Statistique/Statistique';
 import Notification from './componets/admin/notification/Notification';
 import Profil from './componets/admin/profil/Profil';
@@ -32,7 +30,6 @@ const App = () => {
     <div className='app'>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/test' element={<Test/>} />
         <Route path='admin' element={<MasterLayout/>}>
           <Route index element={<Dashboard/>} />
           <Route path='statistique' element={<Statistique/>} />

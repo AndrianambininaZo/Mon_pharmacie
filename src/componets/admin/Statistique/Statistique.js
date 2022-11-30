@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { listStatMois } from '../../../redux/actions/StatistiqueAction';
 import './statistique.scss'
 
 const Statistique = () => {
     const [anneesMois, setAnneesMois] = useState('');
+    const statMoisList=useSelector((state=>state.statMoisList));
+    const dispatch=useDispatch();
+    const {mois}=statMoisList;
+    useEffect(async ()=>{
+        dispatch(listStatMois("2022"));
+    },[dispatch])
     return (
         <div className='statistique'>
             <div className='statMois'>
@@ -15,23 +25,26 @@ const Statistique = () => {
                     </div>
                     <table className='table table-bordered'>
                         <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Janvier</th>
-                                <th>Fervrier</th>
-                                <th>Mars</th>
-                                <th>Avril</th>
-                                <th>Mai</th>
-                                <th>Juin</th>
-                                <th>Juillet</th>
-                                <th>Aout</th>
-                                <th>Septabre</th>
-                                <th>Octobre</th>
-                                <th>Novembre</th>
-                                <th>Decembre</th>
+                           {
+                            mois.map((res,index)=>
+                            <tr key={index}>
+                            <th>{res.mois}</th>
                             </tr>
+                            )
+                            }
                         </thead>
                         <tbody>
+                        <tr>
+                        <tbody>
+                            {
+                                mois.map((res,index)=>
+                                <tr key={index}>
+                                    <td>{res.montantTotal}</td>
+                                </tr>
+                                )
+                            }
+                        </tbody>                            
+                        </tr>
 
                         </tbody>
                     </table>
